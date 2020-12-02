@@ -6,6 +6,7 @@ const ONE_CHAR_RETURNING_PRODUCTS = 'c'
 const WORD_RETURNING_PRODUCTS = 'card'
 const WORD_NOT_RETURNING_PRODUCTS = 'hhhh'
 const SPECIFIC_PRODUCT_NAME = '$100 Physical Gift Card'
+const SEARCH_TERM_WILDCARD = '%%%'
 
 
 // IDs
@@ -22,9 +23,13 @@ const MIDDLE_SEARCH_BUTTON_ID = 'input.button-1.search-button';
 
 // REQUIREMENTS DATA
 
-const CATEGORIES = ["All", "Computers", "Computers >> Desktops", "Computers >> Notebooks", "Computers >> Software", "Electronics", "Electronics >> Camera & photo", "Electronics >> Cell phones", "Electronics >> Others", "Apparel", "Apparel >> Shoes", "Apparel >> Clothing", "Apparel >> Accessories", "Digital downloads", "Books", "Jewelry", "Gift Cards"]
+const REQUIRED_CATEGORIES = ["All", "Computers", "Computers >> Desktops", "Computers >> Notebooks", "Computers >> Software", "Electronics", "Electronics >> Camera & photo", "Electronics >> Cell phones", "Electronics >> Others", "Apparel", "Apparel >> Shoes", "Apparel >> Clothing", "Apparel >> Accessories", "Digital downloads", "Books", "Jewelry", "Gift Cards"]
+const REQUIRED_MANUFACTURERS = ["All", "Apple", "Lenovo", "Nokia"]
+const REQUIRED_PRODUCTS_SORT_BY_OPTIONS = ["Position", "Name: A to Z", "Name: Z to A", "Price: Low to High", "Price: High to Low", "Created on"]
+const REQUIRED_PRODUCTS_PAGE_SIZE_OPTIONS = ["10", "20", "50", "100"]
 
 
+// HELPER FUNCTIONS
 
 // TOP SEARCH BAR
 
@@ -137,7 +142,7 @@ describe('Search feature - nopCommerce', () => {
 
         context('Search', () => {
 
-            // debateable: behaviour could be to not search at all, or to display all products
+            // debateable: behaviour could be to not search at all (as per Top Search Bar behaviour), or to display all products
             it('should display a `minimum length ...` warning message when searching with 0 character', function () {
                 cy.get(MIDDLE_SEARCH_BUTTON_ID).click()
                 cy.contains(SEARCH_TERM_MIN_LENGTH).should('exist')
@@ -175,11 +180,10 @@ describe('Search feature - nopCommerce', () => {
                     cy.get('#adv').check()
                 })
 
-                it.only('should have all the categories stated in the wireframe sketch', function () {
+                it('should have all the categories stated in the requirements (wireframe sketch)', function () {
                     cy.get('#cid').children('option').then(options => {
                         const actual = [...options].map(o => o.text)
-                        // expect(actual.toString()).to.eq(actual.sort().toString())
-                        console.log(actual)
+                        expect(actual.sort()).to.deep.eq(REQUIRED_CATEGORIES.sort())
                     })
                 })
 
@@ -218,38 +222,162 @@ describe('Search feature - nopCommerce', () => {
 
             })
 
+            context('Manufacturer', () => {
+
+                beforeEach(() => {
+                    cy.get('#adv').check()
+                })
+
+                // Missing information: not defined what "Our brand is"
+                it('should have all the manufacturers stated in the requirements (wireframe sketch)', function () {
+                    cy.get('#mid').children('option').then(options => {
+                        const actual = [...options].map(o => o.text)
+                        expect(actual.sort()).to.deep.eq(REQUIRED_MANUFACTURERS.sort())
+                    })
+                })
+
+                it('should return products from all manufacturers when selecting the `All` option', function () {
+                    searchMiddleSearch('inch')
+                    cy.get('div.product-grid').contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
+                    cy.get('div.product-grid').contains('Apple MacBook Pro 13-inch')
+                })
+
+                it('should only return products from a specific manufacturer when selecting that manufacturer option', function () {
+                    cy.get('#mid').select('HP')
+                    searchMiddleSearch('inch')
+                    cy.get('div.product-grid').contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
+                    cy.get('div.product-grid').contains('Apple MacBook Pro 13-inch').should('not.exist')
+                })
+
+            })
+
+            context('Price Range', () => {
+
+                beforeEach(() => {
+                    cy.get('#adv').check()
+                })
+
+                it('should return no products (or display a warning message) if the Price Range values are invalid (non-numerical)', function () {
+                    cy.get('#pf').type('a')
+                    cy.get('#pt').type('b')
+                    searchMiddleSearch('inch')
+                    getProductGrid().should('not.exist')
+                })
+
+                it('should return no products (or display a warning message) if the Price Range values are logically invalid (price from higher than price to)', function () {
+                    cy.get('#pf').type('10')
+                    cy.get('#pt').type('0')
+                    searchMiddleSearch('inch')
+                    getProductGrid().should('not.exist')
+                })
+
+                it('should only return products within the Price Range', function () {
+                    cy.get('#pf').type('40')
+                    cy.get('#pt').type('1500')
+                    searchMiddleSearch('inch')
+                    cy.get('div.product-grid').contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
+                    cy.get('div.product-grid').contains('Apple MacBook Pro 13-inch').should('not.exist')
+                    cy.get('div.product-grid').contains('Universal 7-8 Inch Tablet Cover').should('not.exist')
+                })
+
+                it('should only return products within the Price Range even if a price range value is missing', function () {
+                    cy.get('#pf').type('40')
+                    searchMiddleSearch('inch')
+                    cy.get('div.product-grid').contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
+                    cy.get('div.product-grid').contains('Apple MacBook Pro 13-inch')
+                    cy.get('div.product-grid').contains('Universal 7-8 Inch Tablet Cover').should('not.exist')
+                })
+
+            })
+
+            context('Search In Product Descriptions option', () => {
+
+                beforeEach(() => {
+                    cy.get('#adv').check()
+                })
+
+                it('should return products that have the search term in their description (but not in their title) if the Search In Product Descriptions checkbox is checked', function () {
+                    cy.get('#sid').check()
+                    searchMiddleSearch('inch')
+                    cy.get('div.product-grid').contains('HTC One Mini Blue')
+                })
+
+                it('should not return products that have the search term in their description if the Search In Product Descriptions checkbox is NOT checked', function () {
+                    searchMiddleSearch('inch')
+                    cy.get('div.product-grid').contains('HTC One Mini Blue').should('not.exist')
+                })
+
+            })
+
         })
 
+        context('Product Selectors', () => {
+
+            beforeEach(() => {
+                searchMiddleSearch(SEARCH_TERM_WILDCARD)
+            })
+
+            context('Products Sort By', () => {
+
+                it('should have all the Products Sort By options in the correct order and as stated in the requirements (wireframe sketch)', function () {
+                    cy.get('#products-orderby').children('option').then(options => {
+                        const actual = [...options].map(o => o.text)
+                        expect(actual.to.deep.eq(REQUIRED_PRODUCTS_SORT_BY_OPTIONS))
+                    })
+                })
+            })
+
+
+            context('Products Page Size', () => {
+
+                it('should have all the `show x results per page` in the correct order and as stated in the requirements (wireframe sketch)', function () {
+                    cy.get('#products-pagesize').children('option').then(options => {
+                        const actual = [...options].map(o => o.text)
+                        expect(actual).to.deep.eq(REQUIRED_PRODUCTS_PAGE_SIZE_OPTIONS)
+                    })
+                })
+
+                // test will need to be updated upon fixing failing test above
+                it('should limit the number of products per page when selecting a `show x results per page` option', function () {
+                    cy.get('#products-pagesize').select('3')
+                    cy.get('div.item-grid').children().should('have.length', 3)
+                })
+
+                context('Pagination', () => {
+
+                    beforeEach(() => {
+                        cy.get('#products-pagesize').select('3')
+                    })
+
+                    it('should navigate to the correct page when selecting a numbered pagination page (e.g. `3`)', function () {
+                        cy.get('div.pager > ul > li:nth-child(3)').click();
+                        cy.url().should('include', 'pagenumber=3')
+                    })
+
+                    it('should navigate to the correct page when selecting the pagination `next page` (i.e. `>`)', function () {
+                        cy.get('li.next-page').click();
+                        cy.url().should('include', 'pagenumber=2')
+                    })
+
+                    it('should navigate to the correct page when selecting the pagination `last page` (i.e. `>`)', function () {
+                        cy.get('li.last-page').click();
+                        cy.url().should('include', 'pagenumber=15')
+                    })
+
+                    it('should navigate to the correct page when selecting the pagination `previous page` (i.e. `>`)', function () {
+                        cy.get('li.last-page').click();
+                        cy.get('li.previous-page').click();
+                        cy.url().should('include', 'pagenumber=14')
+                    })
+
+                    it.only('should navigate to the correct page when selecting the pagination `first page` (i.e. `>`)', function () {
+                        cy.get('li.last-page').click();
+                        cy.get('li.first-page').click();
+                        cy.url().should('not.include', 'pagenumber')
+                    })
+
+                })
+            })
+        })
     })
-    // context('GIVEN: I visit nopCommerce Search Feature page', () => {
-
-    //     before(() => {
-    //         cy.visit('https://demo.nopcommerce.com/search?q=card')
-    //     })
-
-    //     context('WHEN: I type one charcater in the top search bar and press Search', () => {
-
-    //         before(() => {
-    //             cy.get('#small-searchterms')
-    //                 .type('card')
-
-    //             // #small-search-box-form > input.button-1.search-box-button
-    //         })
-
-    //         it('THEN: I visit the Kitchen Sink', () => {
-
-    //             // cy.get('.action-email')
-    //             //     .type('fake@email.com')
-    //             //     .should('have.value', 'fake@email.com')
-    //         })
-
-    //         // it('WHEN: I click on `type`', () => {
-    //         //     cy.contains('type').click()
-    //         // })
-
-    //         // it('THEN: url includes /commands/actions', () => {
-    //         //     cy.url().should('include', '/commands/actions')
-    //         // })
-    //     })
-    // })
 })
