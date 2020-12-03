@@ -1,0 +1,142 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-12-03T17:29:21.309Z",
+    "end": "2020-12-03T17:29:31.035Z",
+    "duration": 9726,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d561ad82-efc5-47f9-9c4a-004692ff605f",
+      "title": "",
+      "fullFile": "cypress/integration/search_spec.js",
+      "file": "cypress/integration/search_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2d32ad0c-5e55-4c2e-be70-44e378bdd780",
+          "title": "nopCommerce",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "6b6b51e9-5d58-4565-be8b-e5ed4a34b135",
+              "title": "Search Feature",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [],
+              "suites": [
+                {
+                  "uuid": "73b5ffce-55bc-46bf-9639-633a3dbc6c3a",
+                  "title": "Product Item Box",
+                  "fullFile": "",
+                  "file": "",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "should add the product to the Cart WHEN the `Add to Cart` button is clicked",
+                      "fullTitle": "nopCommerce Search Feature Product Item Box should add the product to the Cart WHEN the `Add to Cart` button is clicked",
+                      "timedOut": null,
+                      "duration": 7856,
+                      "state": "failed",
+                      "speed": null,
+                      "pass": false,
+                      "fail": true,
+                      "pending": false,
+                      "context": null,
+                      "code": "// STEP: `Add to Cart` button is clicked\ncy.get('.product-box-add-to-cart-button').click(); // STEP: Assert Shopping Cart contains 1 item\ncy.get('.cart-qty').contains('(1)');",
+                      "err": {
+                        "message": "AssertionError: Timed out retrying: Expected to find content: '(1)' within the element: <span.cart-qty> but never did.",
+                        "estack": "AssertionError: Timed out retrying: Expected to find content: '(1)' within the element: <span.cart-qty> but never did.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:732:29)",
+                        "diff": null
+                      },
+                      "uuid": "215a1a31-58d4-4df2-aed6-8f7cdcc17cdf",
+                      "parentUUID": "73b5ffce-55bc-46bf-9639-633a3dbc6c3a",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [],
+                  "failures": [
+                    "215a1a31-58d4-4df2-aed6-8f7cdcc17cdf"
+                  ],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 7856,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                }
+              ],
+              "passes": [],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}
