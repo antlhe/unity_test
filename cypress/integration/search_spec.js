@@ -182,7 +182,7 @@ describe('nopCommerce', () => {
 
         context('area - Top Search Bar', () => {
 
-            context('fonctionality - Search', () => {
+            context('functionality - Search', () => {
 
                 it('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
                     searchTopSearch(ONE_CHAR_RETURNING_PRODUCTS)
@@ -212,7 +212,7 @@ describe('nopCommerce', () => {
                 })
             })
 
-            context('fonctionality - Autocomplete', () => {
+            context('functionality - Autocomplete', () => {
 
                 it('WHEN typing 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN autocomplete shows a list of products', () => {
                     typeTopSearch(ONE_CHAR_RETURNING_PRODUCTS)
@@ -251,10 +251,10 @@ describe('nopCommerce', () => {
 
 
                 it('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
-                    // Although this test cases (and the one below which we'll be able to skip upon fixing this failing test) are similar in effect to when searching with the Top Bar seach
+                    // Although this test cases (and the one below which we'll be able to skip upon fixing this failing test) are similar in effect to when searching with the Top Search Bar
                     // I believe they are still valid as the url created through the search is different, e.g.:
-                    // with the Top Bar seach: https://demo.nopcommerce.com/search?q=c
-                    // with the Middle Bar seach: https://demo.nopcommerce.com/search?q=c&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false
+                    // with the Top Search Bar: https://demo.nopcommerce.com/search?q=c
+                    // with the Middle Search Bar: https://demo.nopcommerce.com/search?q=c&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false
                     searchMiddleSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
                     cy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist')

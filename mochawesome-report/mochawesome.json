@@ -5,9 +5,9 @@
     "passes": 36,
     "pending": 2,
     "failures": 8,
-    "start": "2020-12-04T14:18:41.375Z",
-    "end": "2020-12-04T14:20:51.566Z",
-    "duration": 130191,
+    "start": "2020-12-04T17:54:19.003Z",
+    "end": "2020-12-04T17:56:16.747Z",
+    "duration": 117744,
     "testsRegistered": 47,
     "passPercent": 80,
     "pendingPercent": 4.25531914893617,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2e509ff0-5ee5-4620-9bc6-59dcf0bb7b82",
+      "uuid": "5bbbfc91-2597-4baf-9131-cb4ec2272a87",
       "title": "",
       "fullFile": "cypress/integration/search_spec.js",
       "file": "cypress/integration/search_spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "abca644f-b64f-4a64-8fc5-b6e7911dc0c1",
+          "uuid": "bbd150cb-d40e-450b-924c-044b9d92fa24",
           "title": "nopCommerce",
           "fullFile": "",
           "file": "",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "19e21c53-1889-470a-a044-4c28315f4c3a",
+              "uuid": "77cfd904-c6c1-4690-9414-8c3058bb006a",
               "title": "GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=)",
               "fullFile": "",
               "file": "",
@@ -45,7 +45,7 @@
               "tests": [],
               "suites": [
                 {
-                  "uuid": "79d2a915-7566-4d05-ab34-0e6608e649d0",
+                  "uuid": "8ad1748d-6b08-44d6-a0d9-f2477915d749",
                   "title": "area - Top Search Bar",
                   "fullFile": "",
                   "file": "",
@@ -54,8 +54,8 @@
                   "tests": [],
                   "suites": [
                     {
-                      "uuid": "54ba50c8-892f-436e-9f10-f376ef010441",
-                      "title": "fonctionality - Search",
+                      "uuid": "469a8a52-9212-411b-811f-c482843dd634",
+                      "title": "functionality - Search",
                       "fullFile": "",
                       "file": "",
                       "beforeHooks": [],
@@ -63,9 +63,9 @@
                       "tests": [
                         {
                           "title": "WHEN searching with 1 relevant character: c THEN search results include some products",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Search WHEN searching with 1 relevant character: c THEN search results include some products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Search WHEN searching with 1 relevant character: c THEN search results include some products",
                           "timedOut": null,
-                          "duration": 7825,
+                          "duration": 7695,
                           "state": "failed",
                           "speed": null,
                           "pass": false,
@@ -78,16 +78,16 @@
                             "estack": "AssertionError: Timed out retrying: Expected to find element: `div.product-grid`, but never found it.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:410:28)",
                             "diff": null
                           },
-                          "uuid": "8f8efe11-90e2-4d80-bb40-8cc8cf7b96f1",
-                          "parentUUID": "54ba50c8-892f-436e-9f10-f376ef010441",
+                          "uuid": "331c62df-08cd-4720-9003-394bbde48e97",
+                          "parentUUID": "469a8a52-9212-411b-811f-c482843dd634",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "WHEN searching with a relevant word: card THEN search results include some products",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Search WHEN searching with a relevant word: card THEN search results include some products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Search WHEN searching with a relevant word: card THEN search results include some products",
                           "timedOut": null,
-                          "duration": 2025,
+                          "duration": 2093,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -96,16 +96,16 @@
                           "context": null,
                           "code": "//this test can be skipped when the above test case will be fixed\nsearchTopSearch(WORD_RETURNING_PRODUCTS);\ngetProductGrid().should('exist');",
                           "err": {},
-                          "uuid": "d566b2b8-7ebb-4d7b-a260-c64c54780ccf",
-                          "parentUUID": "54ba50c8-892f-436e-9f10-f376ef010441",
+                          "uuid": "1409d821-4fb2-4bb8-9713-dcfaed72535b",
+                          "parentUUID": "469a8a52-9212-411b-811f-c482843dd634",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "WHEN searching with an irrelevant word: hhhh THEN search results return 0 products",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Search WHEN searching with an irrelevant word: hhhh THEN search results return 0 products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Search WHEN searching with an irrelevant word: hhhh THEN search results return 0 products",
                           "timedOut": null,
-                          "duration": 1602,
+                          "duration": 1469,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -114,16 +114,16 @@
                           "context": null,
                           "code": "searchTopSearch(WORD_NOT_RETURNING_PRODUCTS);\ngetProductGrid().should('not.exist');",
                           "err": {},
-                          "uuid": "0a010fec-1a9a-4abb-bcec-179da24caadb",
-                          "parentUUID": "54ba50c8-892f-436e-9f10-f376ef010441",
+                          "uuid": "3bb9a0e4-02e7-41ac-b94c-ee733407a4e6",
+                          "parentUUID": "469a8a52-9212-411b-811f-c482843dd634",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Search WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Search WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed",
                           "timedOut": null,
-                          "duration": 6470,
+                          "duration": 6094,
                           "state": "failed",
                           "speed": null,
                           "pass": false,
@@ -136,16 +136,16 @@
                             "estack": "AssertionError: Timed out retrying: expected '<div.no-result>' to have text 'No results for hhhh', but the text was 'No products were found that matched your criteria.'\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:424:25)",
                             "diff": "- 'No products were found that matched your criteria.'\n+ 'No results for hhhh'\n"
                           },
-                          "uuid": "0e81d358-d9d9-4d60-b8fc-e86ede7b8f33",
-                          "parentUUID": "54ba50c8-892f-436e-9f10-f376ef010441",
+                          "uuid": "cb583219-5258-4022-86ed-cef28f1f378c",
+                          "parentUUID": "469a8a52-9212-411b-811f-c482843dd634",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "WHEN searching with the Top Search Bar THEN the Middle Search Bar input text should be filled with the search term",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Search WHEN searching with the Top Search Bar THEN the Middle Search Bar input text should be filled with the search term",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Search WHEN searching with the Top Search Bar THEN the Middle Search Bar input text should be filled with the search term",
                           "timedOut": null,
-                          "duration": 1549,
+                          "duration": 1515,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -154,32 +154,32 @@
                           "context": null,
                           "code": "searchTopSearch(WORD_RETURNING_PRODUCTS);\ncy.get('#q').should('have.value', WORD_RETURNING_PRODUCTS);",
                           "err": {},
-                          "uuid": "f0328346-2312-4a3c-9077-7252cc0c02a0",
-                          "parentUUID": "54ba50c8-892f-436e-9f10-f376ef010441",
+                          "uuid": "08cb09ee-e3f4-426c-9679-21c765eb2133",
+                          "parentUUID": "469a8a52-9212-411b-811f-c482843dd634",
                           "isHook": false,
                           "skipped": false
                         }
                       ],
                       "suites": [],
                       "passes": [
-                        "d566b2b8-7ebb-4d7b-a260-c64c54780ccf",
-                        "0a010fec-1a9a-4abb-bcec-179da24caadb",
-                        "f0328346-2312-4a3c-9077-7252cc0c02a0"
+                        "1409d821-4fb2-4bb8-9713-dcfaed72535b",
+                        "3bb9a0e4-02e7-41ac-b94c-ee733407a4e6",
+                        "08cb09ee-e3f4-426c-9679-21c765eb2133"
                       ],
                       "failures": [
-                        "8f8efe11-90e2-4d80-bb40-8cc8cf7b96f1",
-                        "0e81d358-d9d9-4d60-b8fc-e86ede7b8f33"
+                        "331c62df-08cd-4720-9003-394bbde48e97",
+                        "cb583219-5258-4022-86ed-cef28f1f378c"
                       ],
                       "pending": [],
                       "skipped": [],
-                      "duration": 19471,
+                      "duration": 18866,
                       "root": false,
                       "rootEmpty": false,
                       "_timeout": 2000
                     },
                     {
-                      "uuid": "b482b1f1-c3b2-405b-906b-1f7c37a2a1f8",
-                      "title": "fonctionality - Autocomplete",
+                      "uuid": "1dd1cfa9-4386-43c1-9b70-2cd3cabf7691",
+                      "title": "functionality - Autocomplete",
                       "fullFile": "",
                       "file": "",
                       "beforeHooks": [],
@@ -187,9 +187,9 @@
                       "tests": [
                         {
                           "title": "WHEN typing 1 relevant character: c THEN autocomplete shows a list of products",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Autocomplete WHEN typing 1 relevant character: c THEN autocomplete shows a list of products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Autocomplete WHEN typing 1 relevant character: c THEN autocomplete shows a list of products",
                           "timedOut": null,
-                          "duration": 5672,
+                          "duration": 5166,
                           "state": "failed",
                           "speed": null,
                           "pass": false,
@@ -202,16 +202,16 @@
                             "estack": "AssertionError: Timed out retrying: Expected to find element: `#ui-id-1 > li:nth-child(1)`, but never found it.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:434:42)",
                             "diff": null
                           },
-                          "uuid": "572e9211-d2c0-4220-862e-0cd631d170d6",
-                          "parentUUID": "b482b1f1-c3b2-405b-906b-1f7c37a2a1f8",
+                          "uuid": "779080cc-3b04-46b7-ab56-c9864fe10986",
+                          "parentUUID": "1dd1cfa9-4386-43c1-9b70-2cd3cabf7691",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "WHEN typing a relevant word: card THEN autocomplete shows a list of products",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Autocomplete WHEN typing a relevant word: card THEN autocomplete shows a list of products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Autocomplete WHEN typing a relevant word: card THEN autocomplete shows a list of products",
                           "timedOut": null,
-                          "duration": 2144,
+                          "duration": 1697,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -220,16 +220,16 @@
                           "context": null,
                           "code": "//this test can be skipped when the above test case will be fixed\ntypeTopSearch(WORD_RETURNING_PRODUCTS);\ngetTopSearchAutocompleteItem().should('exist');",
                           "err": {},
-                          "uuid": "05913e86-2936-4dff-9fa6-9656130f7cf9",
-                          "parentUUID": "b482b1f1-c3b2-405b-906b-1f7c37a2a1f8",
+                          "uuid": "49f8cc36-0880-4e1b-a8f9-22d836b66a61",
+                          "parentUUID": "1dd1cfa9-4386-43c1-9b70-2cd3cabf7691",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "WHEN typing an irrelevant word: hhhh THEN autocomplete does not show a list of products",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Autocomplete WHEN typing an irrelevant word: hhhh THEN autocomplete does not show a list of products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Autocomplete WHEN typing an irrelevant word: hhhh THEN autocomplete does not show a list of products",
                           "timedOut": null,
-                          "duration": 1040,
+                          "duration": 643,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -238,16 +238,16 @@
                           "context": null,
                           "code": "typeTopSearch(WORD_NOT_RETURNING_PRODUCTS);\ngetTopSearchAutocompleteItem().should('not.exist');",
                           "err": {},
-                          "uuid": "80ef4911-6c4c-442c-9127-17ed9e872ac3",
-                          "parentUUID": "b482b1f1-c3b2-405b-906b-1f7c37a2a1f8",
+                          "uuid": "0173ac3a-9a00-4ef4-9553-228c936aa470",
+                          "parentUUID": "1dd1cfa9-4386-43c1-9b70-2cd3cabf7691",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "WHEN clicking an item in the autocomplete list of products THEN the user is taken to that product's page",
-                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar fonctionality - Autocomplete WHEN clicking an item in the autocomplete list of products THEN the user is taken to that product's page",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar functionality - Autocomplete WHEN clicking an item in the autocomplete list of products THEN the user is taken to that product's page",
                           "timedOut": null,
-                          "duration": 3695,
+                          "duration": 3639,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -256,24 +256,24 @@
                           "context": null,
                           "code": "typeTopSearch(SPECIFIC_PRODUCT_NAME);\ngetTopSearchAutocompleteItem().click();\ngetProductPageProductName().contains(SPECIFIC_PRODUCT_NAME);",
                           "err": {},
-                          "uuid": "f0d97c18-0828-4d8d-bb66-bcca88e1afb5",
-                          "parentUUID": "b482b1f1-c3b2-405b-906b-1f7c37a2a1f8",
+                          "uuid": "274d9ca4-8500-420d-a6a2-1e8a6f463c82",
+                          "parentUUID": "1dd1cfa9-4386-43c1-9b70-2cd3cabf7691",
                           "isHook": false,
                           "skipped": false
                         }
                       ],
                       "suites": [],
                       "passes": [
-                        "05913e86-2936-4dff-9fa6-9656130f7cf9",
-                        "80ef4911-6c4c-442c-9127-17ed9e872ac3",
-                        "f0d97c18-0828-4d8d-bb66-bcca88e1afb5"
+                        "49f8cc36-0880-4e1b-a8f9-22d836b66a61",
+                        "0173ac3a-9a00-4ef4-9553-228c936aa470",
+                        "274d9ca4-8500-420d-a6a2-1e8a6f463c82"
                       ],
                       "failures": [
-                        "572e9211-d2c0-4220-862e-0cd631d170d6"
+                        "779080cc-3b04-46b7-ab56-c9864fe10986"
                       ],
                       "pending": [],
                       "skipped": [],
-                      "duration": 12551,
+                      "duration": 11145,
                       "root": false,
                       "rootEmpty": false,
                       "_timeout": 2000
@@ -289,7 +289,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "77fe1856-32ab-4874-8496-a3fc7685d82d",
+                  "uuid": "eb96aa3c-8646-4c5c-b5b6-a634c45543d9",
                   "title": "area - Middle Search Bar",
                   "fullFile": "",
                   "file": "",
@@ -298,7 +298,7 @@
                   "tests": [],
                   "suites": [
                     {
-                      "uuid": "55d19c20-54e8-43d0-89d9-5d1309e98d76",
+                      "uuid": "e36f2028-72aa-4ee7-84a3-2c865d29bf73",
                       "title": "functionality - Search",
                       "fullFile": "",
                       "file": "",
@@ -309,7 +309,7 @@
                           "title": "WHEN searching with 0 character THEN a `search term minimum length` warning message is displayed",
                           "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar functionality - Search WHEN searching with 0 character THEN a `search term minimum length` warning message is displayed",
                           "timedOut": null,
-                          "duration": 1546,
+                          "duration": 1139,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -318,8 +318,8 @@
                           "context": null,
                           "code": "cy.get('input.button-1.search-button').click();\ncy.contains(SEARCH_TERM_MIN_LENGTH).should('exist');",
                           "err": {},
-                          "uuid": "94fceb21-6136-455b-8951-7b4a9a83f4b7",
-                          "parentUUID": "55d19c20-54e8-43d0-89d9-5d1309e98d76",
+                          "uuid": "0307422d-780e-4caf-b3b4-9e0856a2bcea",
+                          "parentUUID": "e36f2028-72aa-4ee7-84a3-2c865d29bf73",
                           "isHook": false,
                           "skipped": false
                         },
@@ -327,21 +327,21 @@
                           "title": "WHEN searching with 1 relevant character: c THEN search results include some products",
                           "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar functionality - Search WHEN searching with 1 relevant character: c THEN search results include some products",
                           "timedOut": null,
-                          "duration": 6214,
+                          "duration": 5982,
                           "state": "failed",
                           "speed": null,
                           "pass": false,
                           "fail": true,
                           "pending": false,
                           "context": null,
-                          "code": "// Although this test cases (and the one below which we'll be able to skip upon fixing this failing test) are similar in effect to when searching with the Top Bar seach\n// I believe they are still valid as the url created through the search is different, e.g.:\n// with the Top Bar seach: https://demo.nopcommerce.com/search?q=c\n// with the Middle Bar seach: https://demo.nopcommerce.com/search?q=c&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false\nsearchMiddleSearch(ONE_CHAR_RETURNING_PRODUCTS);\ngetProductGrid().should('exist');\ncy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist');",
+                          "code": "// Although this test cases (and the one below which we'll be able to skip upon fixing this failing test) are similar in effect to when searching with the Top Search Bar\n// I believe they are still valid as the url created through the search is different, e.g.:\n// with the Top Search Bar: https://demo.nopcommerce.com/search?q=c\n// with the Middle Search Bar: https://demo.nopcommerce.com/search?q=c&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false\nsearchMiddleSearch(ONE_CHAR_RETURNING_PRODUCTS);\ngetProductGrid().should('exist');\ncy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist');",
                           "err": {
                             "message": "AssertionError: Timed out retrying: Expected to find element: `div.product-grid`, but never found it.",
                             "estack": "AssertionError: Timed out retrying: Expected to find element: `div.product-grid`, but never found it.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:464:28)",
                             "diff": null
                           },
-                          "uuid": "f4c87e34-d8fa-4f06-a80c-85066600e847",
-                          "parentUUID": "55d19c20-54e8-43d0-89d9-5d1309e98d76",
+                          "uuid": "5bfd7bb5-fdd8-4f74-9cba-4288304511b4",
+                          "parentUUID": "e36f2028-72aa-4ee7-84a3-2c865d29bf73",
                           "isHook": false,
                           "skipped": false
                         },
@@ -349,7 +349,7 @@
                           "title": "WHEN searching with a relevant word: card THEN search results include some products",
                           "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar functionality - Search WHEN searching with a relevant word: card THEN search results include some products",
                           "timedOut": null,
-                          "duration": 1851,
+                          "duration": 1655,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -358,29 +358,29 @@
                           "context": null,
                           "code": "//this test can be skipped when the above test case will be fixed\nsearchMiddleSearch(WORD_RETURNING_PRODUCTS);\ngetProductGrid().should('exist');",
                           "err": {},
-                          "uuid": "43d255c9-8386-457d-8bdb-89d68581b2b7",
-                          "parentUUID": "55d19c20-54e8-43d0-89d9-5d1309e98d76",
+                          "uuid": "5a72f65d-e09d-4688-be42-45a245675ffc",
+                          "parentUUID": "e36f2028-72aa-4ee7-84a3-2c865d29bf73",
                           "isHook": false,
                           "skipped": false
                         }
                       ],
                       "suites": [],
                       "passes": [
-                        "94fceb21-6136-455b-8951-7b4a9a83f4b7",
-                        "43d255c9-8386-457d-8bdb-89d68581b2b7"
+                        "0307422d-780e-4caf-b3b4-9e0856a2bcea",
+                        "5a72f65d-e09d-4688-be42-45a245675ffc"
                       ],
                       "failures": [
-                        "f4c87e34-d8fa-4f06-a80c-85066600e847"
+                        "5bfd7bb5-fdd8-4f74-9cba-4288304511b4"
                       ],
                       "pending": [],
                       "skipped": [],
-                      "duration": 9611,
+                      "duration": 8776,
                       "root": false,
                       "rootEmpty": false,
                       "_timeout": 2000
                     },
                     {
-                      "uuid": "19ae3e6b-32f2-4faa-894a-e288755dcd4a",
+                      "uuid": "6affe0d1-eb53-4985-976e-01988efacc1d",
                       "title": "GIVEN the Advanced Search checkbox is checked",
                       "fullFile": "",
                       "file": "",
@@ -391,7 +391,7 @@
                           "title": "THEN the Category, Manufacturer and Price Range search features are displayed",
                           "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked THEN the Category, Manufacturer and Price Range search features are displayed",
                           "timedOut": null,
-                          "duration": 760,
+                          "duration": 978,
                           "state": "passed",
                           "speed": "slow",
                           "pass": true,
@@ -400,15 +400,15 @@
                           "context": null,
                           "code": "cy.get('#adv').should('be.checked');\ncy.get('#advanced-search-block').should('be.visible');",
                           "err": {},
-                          "uuid": "e6b40ca7-fd35-4699-847b-4a780009a306",
-                          "parentUUID": "19ae3e6b-32f2-4faa-894a-e288755dcd4a",
+                          "uuid": "58b2d4d5-28b6-4460-b8c2-5208b26f8c2b",
+                          "parentUUID": "6affe0d1-eb53-4985-976e-01988efacc1d",
                           "isHook": false,
                           "skipped": false
                         }
                       ],
                       "suites": [
                         {
-                          "uuid": "fe7280c8-fe33-41da-b2b0-62775007ef22",
+                          "uuid": "ef66de4d-71f3-4b83-8816-011350e84bb5",
                           "title": "functionality - Category",
                           "fullFile": "",
                           "file": "",
@@ -419,7 +419,7 @@
                               "title": "THEN all the categories stated in the requirements (wireframe sketch) are present as options",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Category THEN all the categories stated in the requirements (wireframe sketch) are present as options",
                               "timedOut": null,
-                              "duration": 732,
+                              "duration": 653,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -428,8 +428,8 @@
                               "context": null,
                               "code": "getCategoryOptions().then(function (options) {\n  var actual = (0, _toConsumableArray2[\"default\"])(options).map(function (o) {\n    return o.text;\n  });\n  expect(actual.sort().toString()).to.eq(REQUIRED_CATEGORIES.sort().toString());\n});",
                               "err": {},
-                              "uuid": "905b003f-e751-4d1e-ba32-70705243be49",
-                              "parentUUID": "fe7280c8-fe33-41da-b2b0-62775007ef22",
+                              "uuid": "61ee3179-6695-43a0-b272-f6d4df6a0e73",
+                              "parentUUID": "ef66de4d-71f3-4b83-8816-011350e84bb5",
                               "isHook": false,
                               "skipped": false
                             },
@@ -437,7 +437,7 @@
                               "title": "THEN all the categories are sorted alphabetically",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Category THEN all the categories are sorted alphabetically",
                               "timedOut": null,
-                              "duration": 1717,
+                              "duration": 1261,
                               "state": "failed",
                               "speed": null,
                               "pass": false,
@@ -450,8 +450,8 @@
                                 "estack": "AssertionError: expected 'All,Computers,Computers >> Desktops,Computers >> Notebooks,Computers >> Software,Electronics,Electronics >> Camera & photo,Electronics >> Cell phones,Electronics >> Others,Apparel,Apparel >> Shoes,Apparel >> Clothing,Apparel >> Accessories,Digital downloads,Books,Jewelry,Gift Cards' to equal 'All,Apparel,Apparel >> Accessories,Apparel >> Clothing,Apparel >> Shoes,Books,Computers,Computers >> Desktops,Computers >> Notebooks,Computers >> Software,Digital downloads,Electronics,Electronics >> Camera & photo,Electronics >> Cell phones,Electronics >> Others,Gift Cards,Jewelry'\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:496:44)",
                                 "diff": "- 'All,Computers,Computers >> Desktops,Computers >> Notebooks,Computers >> Software,Electronics,Electronics >> Camera & photo,Electronics >> Cell phones,Electronics >> Others,Apparel,Apparel >> Shoes,Apparel >> Clothing,Apparel >> Accessories,Digital downloads,Books,Jewelry,Gift Cards'\n+ 'All,Apparel,Apparel >> Accessories,Apparel >> Clothing,Apparel >> Shoes,Books,Computers,Computers >> Desktops,Computers >> Notebooks,Computers >> Software,Digital downloads,Electronics,Electronics >> Camera & photo,Electronics >> Cell phones,Electronics >> Others,Gift Cards,Jewelry'\n"
                               },
-                              "uuid": "1ceb2ec5-c7d9-4a82-9b26-b174b77df562",
-                              "parentUUID": "fe7280c8-fe33-41da-b2b0-62775007ef22",
+                              "uuid": "bfb9df15-8b10-4f59-bb50-e18c9820096e",
+                              "parentUUID": "ef66de4d-71f3-4b83-8816-011350e84bb5",
                               "isHook": false,
                               "skipped": false
                             },
@@ -459,7 +459,7 @@
                               "title": "WHEN selecting the `All` option THEN search returns products from all categories",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Category WHEN selecting the `All` option THEN search returns products from all categories",
                               "timedOut": null,
-                              "duration": 1594,
+                              "duration": 3152,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -468,8 +468,8 @@
                               "context": null,
                               "code": "searchMiddleSearch('apple');\ngetProductGrid().contains('Apple iCam');\ngetProductGrid().contains('Apple MacBook Pro 13-inch');",
                               "err": {},
-                              "uuid": "051b68c3-4fec-43ac-a771-20d15c159ee3",
-                              "parentUUID": "fe7280c8-fe33-41da-b2b0-62775007ef22",
+                              "uuid": "545b9510-28e1-421e-8086-cd8c433a5276",
+                              "parentUUID": "ef66de4d-71f3-4b83-8816-011350e84bb5",
                               "isHook": false,
                               "skipped": false
                             },
@@ -477,7 +477,7 @@
                               "title": "WHEN selecting a sub-category THEN search only returns products from that sub-category",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Category WHEN selecting a sub-category THEN search only returns products from that sub-category",
                               "timedOut": null,
-                              "duration": 2346,
+                              "duration": 1814,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -486,8 +486,8 @@
                               "context": null,
                               "code": "getCategorySelector().select('Computers >> Notebooks');\nsearchMiddleSearch('apple');\ngetProductGrid().contains('Apple iCam').should('not.exist');\ngetProductGrid().contains('Apple MacBook Pro 13-inch');",
                               "err": {},
-                              "uuid": "79a870ca-d261-458b-8334-d8476ac20bf2",
-                              "parentUUID": "fe7280c8-fe33-41da-b2b0-62775007ef22",
+                              "uuid": "b56add22-7cb1-42fa-8457-c55235bcc866",
+                              "parentUUID": "ef66de4d-71f3-4b83-8816-011350e84bb5",
                               "isHook": false,
                               "skipped": false
                             },
@@ -495,7 +495,7 @@
                               "title": "WHEN selecting a top category AND the `Automatically search sub categories` checkbox is NOT checked THEN search does NOT return products from this category's sub-categories",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Category WHEN selecting a top category AND the `Automatically search sub categories` checkbox is NOT checked THEN search does NOT return products from this category's sub-categories",
                               "timedOut": null,
-                              "duration": 2515,
+                              "duration": 2048,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -504,8 +504,8 @@
                               "context": null,
                               "code": "getCategorySelector().select('Computers');\nsearchMiddleSearch('apple');\ngetProductGrid().should('not.exist');",
                               "err": {},
-                              "uuid": "b6a95fcb-725b-484f-aa8e-5b99158dc475",
-                              "parentUUID": "fe7280c8-fe33-41da-b2b0-62775007ef22",
+                              "uuid": "d4934869-c994-4a01-9eb6-6b99e50e3733",
+                              "parentUUID": "ef66de4d-71f3-4b83-8816-011350e84bb5",
                               "isHook": false,
                               "skipped": false
                             },
@@ -513,7 +513,7 @@
                               "title": "WHEN selecting a top category AND the `Automatically search sub categories` checkbox is checked THEN search returns products from this category's sub-categories",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Category WHEN selecting a top category AND the `Automatically search sub categories` checkbox is checked THEN search returns products from this category's sub-categories",
                               "timedOut": null,
-                              "duration": 2177,
+                              "duration": 1608,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -522,32 +522,32 @@
                               "context": null,
                               "code": "getCategorySelector().select('Computers');\nenableAutoSearchSubCategories();\nsearchMiddleSearch('apple');\ngetProductGrid().contains('Apple MacBook Pro 13-inch');",
                               "err": {},
-                              "uuid": "120b008c-3f0a-4524-93db-8e48b55ed619",
-                              "parentUUID": "fe7280c8-fe33-41da-b2b0-62775007ef22",
+                              "uuid": "6f4434c1-79cc-4b04-91e7-a722edfeed87",
+                              "parentUUID": "ef66de4d-71f3-4b83-8816-011350e84bb5",
                               "isHook": false,
                               "skipped": false
                             }
                           ],
                           "suites": [],
                           "passes": [
-                            "905b003f-e751-4d1e-ba32-70705243be49",
-                            "051b68c3-4fec-43ac-a771-20d15c159ee3",
-                            "79a870ca-d261-458b-8334-d8476ac20bf2",
-                            "b6a95fcb-725b-484f-aa8e-5b99158dc475",
-                            "120b008c-3f0a-4524-93db-8e48b55ed619"
+                            "61ee3179-6695-43a0-b272-f6d4df6a0e73",
+                            "545b9510-28e1-421e-8086-cd8c433a5276",
+                            "b56add22-7cb1-42fa-8457-c55235bcc866",
+                            "d4934869-c994-4a01-9eb6-6b99e50e3733",
+                            "6f4434c1-79cc-4b04-91e7-a722edfeed87"
                           ],
                           "failures": [
-                            "1ceb2ec5-c7d9-4a82-9b26-b174b77df562"
+                            "bfb9df15-8b10-4f59-bb50-e18c9820096e"
                           ],
                           "pending": [],
                           "skipped": [],
-                          "duration": 11081,
+                          "duration": 10536,
                           "root": false,
                           "rootEmpty": false,
                           "_timeout": 2000
                         },
                         {
-                          "uuid": "170ca79f-31d8-4198-bf72-fa53ab564478",
+                          "uuid": "ffab61d7-daca-4874-89f2-91ede4eabd22",
                           "title": "functionality - Manufacturer",
                           "fullFile": "",
                           "file": "",
@@ -558,7 +558,7 @@
                               "title": "THEN all the manufacturers stated in the requirements (wireframe sketch) are present as options",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Manufacturer THEN all the manufacturers stated in the requirements (wireframe sketch) are present as options",
                               "timedOut": null,
-                              "duration": 1575,
+                              "duration": 1573,
                               "state": "failed",
                               "speed": null,
                               "pass": false,
@@ -571,8 +571,8 @@
                                 "estack": "AssertionError: expected 'All,Apple,HP,Nike' to equal 'All,Apple,Lenovo,Nokia'\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:528:51)",
                                 "diff": "- 'All,Apple,HP,Nike'\n+ 'All,Apple,Lenovo,Nokia'\n"
                               },
-                              "uuid": "c1646441-e61d-4d20-8706-3f26036df1ff",
-                              "parentUUID": "170ca79f-31d8-4198-bf72-fa53ab564478",
+                              "uuid": "7551d0c6-aacf-477a-8e00-d6189f7ac00e",
+                              "parentUUID": "ffab61d7-daca-4874-89f2-91ede4eabd22",
                               "isHook": false,
                               "skipped": false
                             },
@@ -580,7 +580,7 @@
                               "title": "WHEN selecting the `All` option THEN search returns products from all manufacturers",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Manufacturer WHEN selecting the `All` option THEN search returns products from all manufacturers",
                               "timedOut": null,
-                              "duration": 2152,
+                              "duration": 1758,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -589,8 +589,8 @@
                               "context": null,
                               "code": "searchMiddleSearch('inch');\ngetProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook');\ngetProductGrid().contains('Apple MacBook Pro 13-inch');",
                               "err": {},
-                              "uuid": "c3f302df-7d9b-4fa9-9e7e-dd6290da28ff",
-                              "parentUUID": "170ca79f-31d8-4198-bf72-fa53ab564478",
+                              "uuid": "7d06fcdc-08be-442b-84c4-63fba8490940",
+                              "parentUUID": "ffab61d7-daca-4874-89f2-91ede4eabd22",
                               "isHook": false,
                               "skipped": false
                             },
@@ -598,7 +598,7 @@
                               "title": "WHEN selecting a manufacturer THEN search returns only products from that manufacturer",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Manufacturer WHEN selecting a manufacturer THEN search returns only products from that manufacturer",
                               "timedOut": null,
-                              "duration": 1892,
+                              "duration": 1489,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -607,29 +607,29 @@
                               "context": null,
                               "code": "cy.get('#mid').select('HP');\nsearchMiddleSearch('inch');\ngetProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook');\ngetProductGrid().contains('Apple MacBook Pro 13-inch').should('not.exist');",
                               "err": {},
-                              "uuid": "b8166019-25fd-4981-b7be-928907aa0fae",
-                              "parentUUID": "170ca79f-31d8-4198-bf72-fa53ab564478",
+                              "uuid": "a0242bd3-e40b-44b9-ac9f-d2213ba06adb",
+                              "parentUUID": "ffab61d7-daca-4874-89f2-91ede4eabd22",
                               "isHook": false,
                               "skipped": false
                             }
                           ],
                           "suites": [],
                           "passes": [
-                            "c3f302df-7d9b-4fa9-9e7e-dd6290da28ff",
-                            "b8166019-25fd-4981-b7be-928907aa0fae"
+                            "7d06fcdc-08be-442b-84c4-63fba8490940",
+                            "a0242bd3-e40b-44b9-ac9f-d2213ba06adb"
                           ],
                           "failures": [
-                            "c1646441-e61d-4d20-8706-3f26036df1ff"
+                            "7551d0c6-aacf-477a-8e00-d6189f7ac00e"
                           ],
                           "pending": [],
                           "skipped": [],
-                          "duration": 5619,
+                          "duration": 4820,
                           "root": false,
                           "rootEmpty": false,
                           "_timeout": 2000
                         },
                         {
-                          "uuid": "84fe98d4-3fef-4658-9913-9509190e5133",
+                          "uuid": "ec1bcfcb-05f8-4093-8462-48b1db931c97",
                           "title": "functionality - Price Range",
                           "fullFile": "",
                           "file": "",
@@ -640,7 +640,7 @@
                               "title": "WHEN the price range values are valid THEN search only returns products within the Price Range",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Price Range WHEN the price range values are valid THEN search only returns products within the Price Range",
                               "timedOut": null,
-                              "duration": 2175,
+                              "duration": 1708,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -649,8 +649,8 @@
                               "context": null,
                               "code": "enterPriceRangeFrom('40');\nenterPriceRangeTo('1500');\nsearchMiddleSearch('inch');\ngetProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook');\ngetProductGrid().contains('Apple MacBook Pro 13-inch').should('not.exist');\ngetProductGrid().contains('Universal 7-8 Inch Tablet Cover').should('not.exist');",
                               "err": {},
-                              "uuid": "cb9d0acf-7a44-4064-8154-1b7a6ad4f49b",
-                              "parentUUID": "84fe98d4-3fef-4658-9913-9509190e5133",
+                              "uuid": "6006e2b7-0bbb-49c1-a8a7-dababcd2b63e",
+                              "parentUUID": "ec1bcfcb-05f8-4093-8462-48b1db931c97",
                               "isHook": false,
                               "skipped": false
                             },
@@ -658,7 +658,7 @@
                               "title": "WHEN the price range values are invalid (non-numerical) THEN search dismisses those values (and acts as if no price range values were entered)",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Price Range WHEN the price range values are invalid (non-numerical) THEN search dismisses those values (and acts as if no price range values were entered)",
                               "timedOut": null,
-                              "duration": 1820,
+                              "duration": 1870,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -667,8 +667,8 @@
                               "context": null,
                               "code": "enterPriceRangeFrom('a');\nenterPriceRangeTo('b');\nsearchMiddleSearch('inch');\ngetProductGrid().should('exist');",
                               "err": {},
-                              "uuid": "662f4242-c4e5-4784-b014-008a33716e86",
-                              "parentUUID": "84fe98d4-3fef-4658-9913-9509190e5133",
+                              "uuid": "c2b05a50-a303-4721-9bfb-3101b175be75",
+                              "parentUUID": "ec1bcfcb-05f8-4093-8462-48b1db931c97",
                               "isHook": false,
                               "skipped": false
                             },
@@ -676,7 +676,7 @@
                               "title": "WHEN the price range values are LOGICALLY invalid (price from higher than price to) THEN search returns no products",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Price Range WHEN the price range values are LOGICALLY invalid (price from higher than price to) THEN search returns no products",
                               "timedOut": null,
-                              "duration": 1840,
+                              "duration": 3262,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -685,8 +685,8 @@
                               "context": null,
                               "code": "enterPriceRangeFrom('10');\nenterPriceRangeTo('0');\nsearchMiddleSearch('inch');\ngetProductGrid().should('not.exist');",
                               "err": {},
-                              "uuid": "1933b74a-e14c-468f-908c-25d00f399734",
-                              "parentUUID": "84fe98d4-3fef-4658-9913-9509190e5133",
+                              "uuid": "835cf2bf-f4d5-4330-9c6c-d05621e74d57",
+                              "parentUUID": "ec1bcfcb-05f8-4093-8462-48b1db931c97",
                               "isHook": false,
                               "skipped": false
                             },
@@ -694,7 +694,7 @@
                               "title": "WHEN only one price range value is entered (and is valid) THEN the price range filtering still functions and search only returns products accordingly",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Price Range WHEN only one price range value is entered (and is valid) THEN the price range filtering still functions and search only returns products accordingly",
                               "timedOut": null,
-                              "duration": 1969,
+                              "duration": 1455,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -703,29 +703,29 @@
                               "context": null,
                               "code": "enterPriceRangeFrom('40');\nsearchMiddleSearch('inch');\ngetProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook');\ngetProductGrid().contains('Apple MacBook Pro 13-inch');\ngetProductGrid().contains('Universal 7-8 Inch Tablet Cover').should('not.exist');",
                               "err": {},
-                              "uuid": "2332307a-b497-430e-9970-925445f09287",
-                              "parentUUID": "84fe98d4-3fef-4658-9913-9509190e5133",
+                              "uuid": "88958521-61ed-457f-bcee-fc2c5c891e59",
+                              "parentUUID": "ec1bcfcb-05f8-4093-8462-48b1db931c97",
                               "isHook": false,
                               "skipped": false
                             }
                           ],
                           "suites": [],
                           "passes": [
-                            "cb9d0acf-7a44-4064-8154-1b7a6ad4f49b",
-                            "662f4242-c4e5-4784-b014-008a33716e86",
-                            "1933b74a-e14c-468f-908c-25d00f399734",
-                            "2332307a-b497-430e-9970-925445f09287"
+                            "6006e2b7-0bbb-49c1-a8a7-dababcd2b63e",
+                            "c2b05a50-a303-4721-9bfb-3101b175be75",
+                            "835cf2bf-f4d5-4330-9c6c-d05621e74d57",
+                            "88958521-61ed-457f-bcee-fc2c5c891e59"
                           ],
                           "failures": [],
                           "pending": [],
                           "skipped": [],
-                          "duration": 7804,
+                          "duration": 8295,
                           "root": false,
                           "rootEmpty": false,
                           "_timeout": 2000
                         },
                         {
-                          "uuid": "f3c3ae8b-95bd-436d-9bdd-767205852c5f",
+                          "uuid": "3139751c-8ea0-4fce-af64-660eaf3e0b4a",
                           "title": "functionality - Search In Product Descriptions",
                           "fullFile": "",
                           "file": "",
@@ -736,7 +736,7 @@
                               "title": "WHEN the Search In Product Descriptions checkbox is checked THEN search return products that have the search term either in their title or description",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Search In Product Descriptions WHEN the Search In Product Descriptions checkbox is checked THEN search return products that have the search term either in their title or description",
                               "timedOut": null,
-                              "duration": 2230,
+                              "duration": 1453,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -745,8 +745,8 @@
                               "context": null,
                               "code": "enableSearchInProductDescription();\nsearchMiddleSearch('inch');\ngetProductGrid().contains('HTC One Mini Blue');",
                               "err": {},
-                              "uuid": "215d2dec-0f84-4915-9cb3-0fb1ce418a0e",
-                              "parentUUID": "f3c3ae8b-95bd-436d-9bdd-767205852c5f",
+                              "uuid": "a2ae0d61-eaa0-4396-bd62-2717a62e9842",
+                              "parentUUID": "3139751c-8ea0-4fce-af64-660eaf3e0b4a",
                               "isHook": false,
                               "skipped": false
                             },
@@ -754,7 +754,7 @@
                               "title": "WHEN the Search In Product Descriptions checkbox is NOT checked THEN search return products that have the search term in their title",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Middle Search Bar GIVEN the Advanced Search checkbox is checked functionality - Search In Product Descriptions WHEN the Search In Product Descriptions checkbox is NOT checked THEN search return products that have the search term in their title",
                               "timedOut": null,
-                              "duration": 1436,
+                              "duration": 1682,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -763,33 +763,33 @@
                               "context": null,
                               "code": "searchMiddleSearch('inch');\ngetProductGrid().contains('HTC One Mini Blue').should('not.exist');",
                               "err": {},
-                              "uuid": "f13828a4-f51e-4567-957e-747fbae6cdcc",
-                              "parentUUID": "f3c3ae8b-95bd-436d-9bdd-767205852c5f",
+                              "uuid": "f5bd4f1b-e13a-483c-9cd9-e449af72e996",
+                              "parentUUID": "3139751c-8ea0-4fce-af64-660eaf3e0b4a",
                               "isHook": false,
                               "skipped": false
                             }
                           ],
                           "suites": [],
                           "passes": [
-                            "215d2dec-0f84-4915-9cb3-0fb1ce418a0e",
-                            "f13828a4-f51e-4567-957e-747fbae6cdcc"
+                            "a2ae0d61-eaa0-4396-bd62-2717a62e9842",
+                            "f5bd4f1b-e13a-483c-9cd9-e449af72e996"
                           ],
                           "failures": [],
                           "pending": [],
                           "skipped": [],
-                          "duration": 3666,
+                          "duration": 3135,
                           "root": false,
                           "rootEmpty": false,
                           "_timeout": 2000
                         }
                       ],
                       "passes": [
-                        "e6b40ca7-fd35-4699-847b-4a780009a306"
+                        "58b2d4d5-28b6-4460-b8c2-5208b26f8c2b"
                       ],
                       "failures": [],
                       "pending": [],
                       "skipped": [],
-                      "duration": 760,
+                      "duration": 978,
                       "root": false,
                       "rootEmpty": false,
                       "_timeout": 2000
@@ -805,7 +805,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "e6c42356-bb9b-4696-a22f-e68830cd0551",
+                  "uuid": "6bb891e9-9ec4-4cad-9378-ac14f4843b1b",
                   "title": "area - Product Selectors and Pagination",
                   "fullFile": "",
                   "file": "",
@@ -814,7 +814,7 @@
                   "tests": [],
                   "suites": [
                     {
-                      "uuid": "98091a17-4838-4f48-8adb-bff368b042a1",
+                      "uuid": "577e73a5-95f0-4844-a36d-3ff002ccabe3",
                       "title": "GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar",
                       "fullFile": "",
                       "file": "",
@@ -823,7 +823,7 @@
                       "tests": [],
                       "suites": [
                         {
-                          "uuid": "57e66c47-de78-4048-ba5b-2ee02e81b534",
+                          "uuid": "8570ba8e-0478-4e8c-8c74-cab88a9954cf",
                           "title": "functionality - Products Sort By",
                           "fullFile": "",
                           "file": "",
@@ -834,7 +834,7 @@
                               "title": "THEN all the Products Sort By options stated in the requirements (wireframe sketch) are present",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Products Sort By THEN all the Products Sort By options stated in the requirements (wireframe sketch) are present",
                               "timedOut": null,
-                              "duration": 1617,
+                              "duration": 1955,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -843,8 +843,8 @@
                               "context": null,
                               "code": "getProductOrderByOptions().then(function (options) {\n  var actual = (0, _toConsumableArray2[\"default\"])(options).map(function (o) {\n    return o.text;\n  });\n  expect(actual.toString()).to.eq(REQUIRED_PRODUCTS_SORT_BY_OPTIONS.toString());\n});",
                               "err": {},
-                              "uuid": "16c98e31-4cf8-4dbf-8a15-ee4aaf9ec0b9",
-                              "parentUUID": "57e66c47-de78-4048-ba5b-2ee02e81b534",
+                              "uuid": "869bf016-d817-4413-8b3d-ed13c8887e7a",
+                              "parentUUID": "8570ba8e-0478-4e8c-8c74-cab88a9954cf",
                               "isHook": false,
                               "skipped": false
                             },
@@ -852,7 +852,7 @@
                               "title": "WHEN selecting `Name: A to Z` Products Sort By option THEN the products are sorted alphabetically",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Products Sort By WHEN selecting `Name: A to Z` Products Sort By option THEN the products are sorted alphabetically",
                               "timedOut": null,
-                              "duration": 2441,
+                              "duration": 1902,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -861,8 +861,8 @@
                               "context": null,
                               "code": "getProductOrderBySelector().select('Name: A to Z');\ngetProductTitlesInGrid().then(function (productTitles) {\n  // .toUpperCase() because javascript sort logic is different to the site's with regard to handling lower cases, whilst the later is still valid\n  var productTitlesArray = (0, _toConsumableArray2[\"default\"])(productTitles).map(function (o) {\n    return o.text.toUpperCase();\n  });\n  var productTitlesArraySorted = (0, _toConsumableArray2[\"default\"])(productTitlesArray).sort();\n  expect(productTitlesArray.toString()).to.eq(productTitlesArraySorted.toString());\n});",
                               "err": {},
-                              "uuid": "508536bd-355b-41e8-9d2e-7bb731e63442",
-                              "parentUUID": "57e66c47-de78-4048-ba5b-2ee02e81b534",
+                              "uuid": "535a52a3-6238-4480-ad35-f8cbcf43bb97",
+                              "parentUUID": "8570ba8e-0478-4e8c-8c74-cab88a9954cf",
                               "isHook": false,
                               "skipped": false
                             },
@@ -870,7 +870,7 @@
                               "title": "WHEN selecting `Name: Z to A` Products Sort By option THEN the products are sorted in reverse alphabetical order",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Products Sort By WHEN selecting `Name: Z to A` Products Sort By option THEN the products are sorted in reverse alphabetical order",
                               "timedOut": null,
-                              "duration": 2266,
+                              "duration": 1992,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -879,8 +879,8 @@
                               "context": null,
                               "code": "getProductOrderBySelector().select('Name: Z to A');\ngetProductTitlesInGrid().then(function (productTitles) {\n  var productTitlesArray = (0, _toConsumableArray2[\"default\"])(productTitles).map(function (o) {\n    return o.text.toUpperCase();\n  });\n  var productTitlesArraySorted = (0, _toConsumableArray2[\"default\"])(productTitlesArray).sort().reverse();\n  expect(productTitlesArray.toString()).to.eq(productTitlesArraySorted.toString());\n});",
                               "err": {},
-                              "uuid": "df381cde-0ab7-4d26-aba6-f2c65324f3b2",
-                              "parentUUID": "57e66c47-de78-4048-ba5b-2ee02e81b534",
+                              "uuid": "1a1a4f08-8d6f-4667-9457-4e1855dfecaf",
+                              "parentUUID": "8570ba8e-0478-4e8c-8c74-cab88a9954cf",
                               "isHook": false,
                               "skipped": false
                             },
@@ -888,7 +888,7 @@
                               "title": "WHEN selecting `Price: Low to High` Products Sort By option THEN the products are sorted accordingly",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Products Sort By WHEN selecting `Price: Low to High` Products Sort By option THEN the products are sorted accordingly",
                               "timedOut": null,
-                              "duration": 3729,
+                              "duration": 1900,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -897,8 +897,8 @@
                               "context": null,
                               "code": "getProductOrderBySelector().select('Price: Low to High');\ngetProductPricesInGrid().then(function (productPrices) {\n  var productPricesStrArray = (0, _toConsumableArray2[\"default\"])(productPrices).map(function (o) {\n    return o.textContent;\n  });\n  var productPricesArray = [];\n  var _iterator = _createForOfIteratorHelper(productPricesStrArray),\n      _step;\n  try {\n    for (_iterator.s(); !(_step = _iterator.n()).done;) {\n      var productPriceString = _step.value;\n      var price;\n      if (productPriceString === \"\") {\n        price = 0;\n      } else {\n        price = parseFloat(productPriceString.substring(productPriceString.indexOf('$') + 1).replace(',', ''));\n      }\n      productPricesArray.push(price);\n    }\n  } catch (err) {\n    _iterator.e(err);\n  } finally {\n    _iterator.f();\n  }\n  var productPricesArraySorted = [].concat(productPricesArray).sort(function (a, b) {\n    return a - b;\n  });\n  expect(productPricesArray.toString()).to.eq(productPricesArraySorted.toString());\n});",
                               "err": {},
-                              "uuid": "bf2fba98-023b-4049-8e04-d22ed9e8dd37",
-                              "parentUUID": "57e66c47-de78-4048-ba5b-2ee02e81b534",
+                              "uuid": "0febc099-64ca-4c4f-af56-5a062f482d35",
+                              "parentUUID": "8570ba8e-0478-4e8c-8c74-cab88a9954cf",
                               "isHook": false,
                               "skipped": false
                             },
@@ -906,7 +906,7 @@
                               "title": "WHEN selecting `Price: High to Low` Products Sort By option THEN the products are sorted accordingly",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Products Sort By WHEN selecting `Price: High to Low` Products Sort By option THEN the products are sorted accordingly",
                               "timedOut": null,
-                              "duration": 2657,
+                              "duration": 1908,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -915,30 +915,30 @@
                               "context": null,
                               "code": "getProductOrderBySelector().select('Price: High to Low');\ngetProductPricesInGrid().then(function (productPrices) {\n  var productPricesStrArray = (0, _toConsumableArray2[\"default\"])(productPrices).map(function (o) {\n    return o.textContent;\n  });\n  var productPricesArray = [];\n  var _iterator2 = _createForOfIteratorHelper(productPricesStrArray),\n      _step2;\n  try {\n    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {\n      var productPriceString = _step2.value;\n      var price;\n      if (productPriceString === \"\") {\n        price = 0;\n      } else {\n        price = parseFloat(productPriceString.substring(productPriceString.indexOf('$') + 1).replace(',', ''));\n      }\n      productPricesArray.push(price);\n    }\n  } catch (err) {\n    _iterator2.e(err);\n  } finally {\n    _iterator2.f();\n  }\n  var productPricesArraySorted = [].concat(productPricesArray).sort(function (a, b) {\n    return a - b;\n  }).reverse();\n  expect(productPricesArray.toString()).to.eq(productPricesArraySorted.toString());\n});",
                               "err": {},
-                              "uuid": "de34ac08-f294-4c77-9529-177171972d1d",
-                              "parentUUID": "57e66c47-de78-4048-ba5b-2ee02e81b534",
+                              "uuid": "e6ca3ff6-ac27-4e24-80f3-e278392bb3f1",
+                              "parentUUID": "8570ba8e-0478-4e8c-8c74-cab88a9954cf",
                               "isHook": false,
                               "skipped": false
                             }
                           ],
                           "suites": [],
                           "passes": [
-                            "16c98e31-4cf8-4dbf-8a15-ee4aaf9ec0b9",
-                            "508536bd-355b-41e8-9d2e-7bb731e63442",
-                            "df381cde-0ab7-4d26-aba6-f2c65324f3b2",
-                            "bf2fba98-023b-4049-8e04-d22ed9e8dd37",
-                            "de34ac08-f294-4c77-9529-177171972d1d"
+                            "869bf016-d817-4413-8b3d-ed13c8887e7a",
+                            "535a52a3-6238-4480-ad35-f8cbcf43bb97",
+                            "1a1a4f08-8d6f-4667-9457-4e1855dfecaf",
+                            "0febc099-64ca-4c4f-af56-5a062f482d35",
+                            "e6ca3ff6-ac27-4e24-80f3-e278392bb3f1"
                           ],
                           "failures": [],
                           "pending": [],
                           "skipped": [],
-                          "duration": 12710,
+                          "duration": 9657,
                           "root": false,
                           "rootEmpty": false,
                           "_timeout": 2000
                         },
                         {
-                          "uuid": "225b91cc-08d2-479d-b248-853c0df9dcf5",
+                          "uuid": "cd313d65-aa5b-4cfb-802c-8b00237ea172",
                           "title": "functionality - Products Page Size",
                           "fullFile": "",
                           "file": "",
@@ -949,7 +949,7 @@
                               "title": "THEN all the Products Page Size options stated in the requirements (wireframe sketch) are present",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Products Page Size THEN all the Products Page Size options stated in the requirements (wireframe sketch) are present",
                               "timedOut": null,
-                              "duration": 2881,
+                              "duration": 1956,
                               "state": "failed",
                               "speed": null,
                               "pass": false,
@@ -962,8 +962,8 @@
                                 "estack": "AssertionError: expected '3,6,9,18' to equal '10,20,50,100'\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:699:44)",
                                 "diff": "- '3,6,9,18'\n+ '10,20,50,100'\n"
                               },
-                              "uuid": "cb4994a0-0e82-4ebb-9b2f-7f284cf3b8e4",
-                              "parentUUID": "225b91cc-08d2-479d-b248-853c0df9dcf5",
+                              "uuid": "7d8dbfbc-c6b3-4867-a510-680d033e9ffd",
+                              "parentUUID": "cd313d65-aa5b-4cfb-802c-8b00237ea172",
                               "isHook": false,
                               "skipped": false
                             },
@@ -971,7 +971,7 @@
                               "title": "WHEN selecting a Products Page Size option (e.g. 3) THEN only (e.g. 3) products per page are displayed",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Products Page Size WHEN selecting a Products Page Size option (e.g. 3) THEN only (e.g. 3) products per page are displayed",
                               "timedOut": null,
-                              "duration": 2831,
+                              "duration": 2376,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -980,28 +980,28 @@
                               "context": null,
                               "code": "getProductPageSizeSelector().select('3');\ncy.get('div.item-grid').children().should('have.length', 3);",
                               "err": {},
-                              "uuid": "ea0fe0e5-abd3-4612-bdb4-60491a45c6eb",
-                              "parentUUID": "225b91cc-08d2-479d-b248-853c0df9dcf5",
+                              "uuid": "935b3ae3-92f9-4ba7-b131-2866d6d91dbd",
+                              "parentUUID": "cd313d65-aa5b-4cfb-802c-8b00237ea172",
                               "isHook": false,
                               "skipped": false
                             }
                           ],
                           "suites": [],
                           "passes": [
-                            "ea0fe0e5-abd3-4612-bdb4-60491a45c6eb"
+                            "935b3ae3-92f9-4ba7-b131-2866d6d91dbd"
                           ],
                           "failures": [
-                            "cb4994a0-0e82-4ebb-9b2f-7f284cf3b8e4"
+                            "7d8dbfbc-c6b3-4867-a510-680d033e9ffd"
                           ],
                           "pending": [],
                           "skipped": [],
-                          "duration": 5712,
+                          "duration": 4332,
                           "root": false,
                           "rootEmpty": false,
                           "_timeout": 2000
                         },
                         {
-                          "uuid": "b25bab32-6760-491d-9d6d-431641f6011e",
+                          "uuid": "a7a09e8f-a4b7-4b2b-a3d8-6da2b0960d08",
                           "title": "functionality - Pagination",
                           "fullFile": "",
                           "file": "",
@@ -1010,7 +1010,7 @@
                           "tests": [],
                           "suites": [
                             {
-                              "uuid": "f10a2924-108d-4dc5-8c7a-8a7cb729c7a5",
+                              "uuid": "d115f9b4-1c5c-4f97-8e5d-2939b1d81beb",
                               "title": "GIVEN the Products Page Size option 3 is selected",
                               "fullFile": "",
                               "file": "",
@@ -1021,7 +1021,7 @@
                                   "title": "WHEN the 3rd pagination page is clicked THEN the user is taken to the correct (3rd) pagination page",
                                   "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Pagination GIVEN the Products Page Size option 3 is selected WHEN the 3rd pagination page is clicked THEN the user is taken to the correct (3rd) pagination page",
                                   "timedOut": null,
-                                  "duration": 2645,
+                                  "duration": 2558,
                                   "state": "passed",
                                   "speed": "slow",
                                   "pass": true,
@@ -1030,8 +1030,8 @@
                                   "context": null,
                                   "code": "var pageNum = 3;\nclickOnPaginationPageNum(pageNum);\ncy.url().should('include', 'pagenumber=' + pageNum);",
                                   "err": {},
-                                  "uuid": "01f47927-715a-450d-b2ab-7bf01a957e54",
-                                  "parentUUID": "f10a2924-108d-4dc5-8c7a-8a7cb729c7a5",
+                                  "uuid": "4f45ef4d-152f-432d-bad4-f622960445bb",
+                                  "parentUUID": "d115f9b4-1c5c-4f97-8e5d-2939b1d81beb",
                                   "isHook": false,
                                   "skipped": false
                                 },
@@ -1039,7 +1039,7 @@
                                   "title": "WHEN clicking on the pagination `next page` (i.e. `>`) THEN the user is taken to the correct (2nd) pagination page",
                                   "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Pagination GIVEN the Products Page Size option 3 is selected WHEN clicking on the pagination `next page` (i.e. `>`) THEN the user is taken to the correct (2nd) pagination page",
                                   "timedOut": null,
-                                  "duration": 2504,
+                                  "duration": 2335,
                                   "state": "passed",
                                   "speed": "slow",
                                   "pass": true,
@@ -1048,8 +1048,8 @@
                                   "context": null,
                                   "code": "clickOnNextPaginationPage();\ncy.url().should('include', 'pagenumber=2');",
                                   "err": {},
-                                  "uuid": "7c70894f-5c77-4dde-8dc9-9d9e8cc0ab9c",
-                                  "parentUUID": "f10a2924-108d-4dc5-8c7a-8a7cb729c7a5",
+                                  "uuid": "5120121e-e004-474f-866c-ad819a4ebf61",
+                                  "parentUUID": "d115f9b4-1c5c-4f97-8e5d-2939b1d81beb",
                                   "isHook": false,
                                   "skipped": false
                                 },
@@ -1057,7 +1057,7 @@
                                   "title": "WHEN clicking the pagination `last page` (i.e. `>>`) THEN the user is taken to the correct pagination page",
                                   "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Pagination GIVEN the Products Page Size option 3 is selected WHEN clicking the pagination `last page` (i.e. `>>`) THEN the user is taken to the correct pagination page",
                                   "timedOut": null,
-                                  "duration": 2599,
+                                  "duration": 2367,
                                   "state": "passed",
                                   "speed": "slow",
                                   "pass": true,
@@ -1066,8 +1066,8 @@
                                   "context": null,
                                   "code": "clickOnLastPaginationPage();\ncy.url().should('include', 'pagenumber=15');",
                                   "err": {},
-                                  "uuid": "050e8730-5eaa-4376-b138-9dcf53f545e4",
-                                  "parentUUID": "f10a2924-108d-4dc5-8c7a-8a7cb729c7a5",
+                                  "uuid": "241db871-bdb2-4efb-b456-6712c1eba3e2",
+                                  "parentUUID": "d115f9b4-1c5c-4f97-8e5d-2939b1d81beb",
                                   "isHook": false,
                                   "skipped": false
                                 },
@@ -1075,7 +1075,7 @@
                                   "title": "WHEN clicking the pagination `previous page` (i.e. `<`) THEN the user is taken to the correct pagination page",
                                   "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Pagination GIVEN the Products Page Size option 3 is selected WHEN clicking the pagination `previous page` (i.e. `<`) THEN the user is taken to the correct pagination page",
                                   "timedOut": null,
-                                  "duration": 3466,
+                                  "duration": 2781,
                                   "state": "passed",
                                   "speed": "slow",
                                   "pass": true,
@@ -1084,8 +1084,8 @@
                                   "context": null,
                                   "code": "clickOnLastPaginationPage();\nclickOnPreviousPaginationPage();\ncy.url().should('include', 'pagenumber=14');",
                                   "err": {},
-                                  "uuid": "f6058770-a18e-4e49-bbc9-3fad3dd66582",
-                                  "parentUUID": "f10a2924-108d-4dc5-8c7a-8a7cb729c7a5",
+                                  "uuid": "256684d5-2a90-4dae-b56c-48e29dcd2a5f",
+                                  "parentUUID": "d115f9b4-1c5c-4f97-8e5d-2939b1d81beb",
                                   "isHook": false,
                                   "skipped": false
                                 },
@@ -1093,7 +1093,7 @@
                                   "title": "WHEN clicking the pagination `first page` (i.e. `<<`) THEN the user is taken to the correct pagination page",
                                   "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar functionality - Pagination GIVEN the Products Page Size option 3 is selected WHEN clicking the pagination `first page` (i.e. `<<`) THEN the user is taken to the correct pagination page",
                                   "timedOut": null,
-                                  "duration": 2993,
+                                  "duration": 2803,
                                   "state": "passed",
                                   "speed": "slow",
                                   "pass": true,
@@ -1102,24 +1102,24 @@
                                   "context": null,
                                   "code": "clickOnLastPaginationPage();\nclickOnFirstPaginationPage();\ncy.url().should('not.include', 'pagenumber');",
                                   "err": {},
-                                  "uuid": "1e30b03f-f374-452d-97ed-dba90850e70d",
-                                  "parentUUID": "f10a2924-108d-4dc5-8c7a-8a7cb729c7a5",
+                                  "uuid": "aed95acd-a72f-4106-acb8-5f2057efa22f",
+                                  "parentUUID": "d115f9b4-1c5c-4f97-8e5d-2939b1d81beb",
                                   "isHook": false,
                                   "skipped": false
                                 }
                               ],
                               "suites": [],
                               "passes": [
-                                "01f47927-715a-450d-b2ab-7bf01a957e54",
-                                "7c70894f-5c77-4dde-8dc9-9d9e8cc0ab9c",
-                                "050e8730-5eaa-4376-b138-9dcf53f545e4",
-                                "f6058770-a18e-4e49-bbc9-3fad3dd66582",
-                                "1e30b03f-f374-452d-97ed-dba90850e70d"
+                                "4f45ef4d-152f-432d-bad4-f622960445bb",
+                                "5120121e-e004-474f-866c-ad819a4ebf61",
+                                "241db871-bdb2-4efb-b456-6712c1eba3e2",
+                                "256684d5-2a90-4dae-b56c-48e29dcd2a5f",
+                                "aed95acd-a72f-4106-acb8-5f2057efa22f"
                               ],
                               "failures": [],
                               "pending": [],
                               "skipped": [],
-                              "duration": 14207,
+                              "duration": 12844,
                               "root": false,
                               "rootEmpty": false,
                               "_timeout": 2000
@@ -1145,7 +1145,7 @@
                       "_timeout": 2000
                     },
                     {
-                      "uuid": "9ad55b87-fa8c-4bae-a83a-46414d365027",
+                      "uuid": "7f82662d-e846-4dd6-b78b-bbdcf8e7963b",
                       "title": "area - Product Results Grid",
                       "fullFile": "",
                       "file": "",
@@ -1154,7 +1154,7 @@
                       "tests": [],
                       "suites": [
                         {
-                          "uuid": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                          "uuid": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                           "title": "GIVEN `$100 Physical Gift Card` (without the quotes) was searched for in the Middle Search Bar",
                           "fullFile": "",
                           "file": "",
@@ -1165,7 +1165,7 @@
                               "title": "WHEN clicking on a product image THEN the user is taken to the product page",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination area - Product Results Grid GIVEN `$100 Physical Gift Card` (without the quotes) was searched for in the Middle Search Bar WHEN clicking on a product image THEN the user is taken to the product page",
                               "timedOut": null,
-                              "duration": 2957,
+                              "duration": 2743,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -1174,8 +1174,8 @@
                               "context": null,
                               "code": "clickOnFirstProductImage();\ngetProductPageProductName().contains(SPECIFIC_PRODUCT_NAME);",
                               "err": {},
-                              "uuid": "4635bcb0-3d04-4a06-8a0c-0d4ed0495d19",
-                              "parentUUID": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                              "uuid": "559533a1-d36b-4482-be2e-3308823daf72",
+                              "parentUUID": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                               "isHook": false,
                               "skipped": false
                             },
@@ -1183,7 +1183,7 @@
                               "title": "WHEN clicking on a product title THEN the user is taken to the product page",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination area - Product Results Grid GIVEN `$100 Physical Gift Card` (without the quotes) was searched for in the Middle Search Bar WHEN clicking on a product title THEN the user is taken to the product page",
                               "timedOut": null,
-                              "duration": 2538,
+                              "duration": 2336,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -1192,8 +1192,8 @@
                               "context": null,
                               "code": "clickOnFirstProductTitle();\ngetProductPageProductName().contains(SPECIFIC_PRODUCT_NAME);",
                               "err": {},
-                              "uuid": "2cf48151-953e-4e52-8ac0-ca84d56fde7b",
-                              "parentUUID": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                              "uuid": "b0b44efb-70ea-4a9d-b5d0-b3202d8b0fc6",
+                              "parentUUID": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                               "isHook": false,
                               "skipped": false
                             },
@@ -1201,7 +1201,7 @@
                               "title": "WHEN the `Add to Cart` button is clicked THEN the product is added to the Cart",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination area - Product Results Grid GIVEN `$100 Physical Gift Card` (without the quotes) was searched for in the Middle Search Bar WHEN the `Add to Cart` button is clicked THEN the product is added to the Cart",
                               "timedOut": null,
-                              "duration": 8047,
+                              "duration": 7352,
                               "state": "failed",
                               "speed": null,
                               "pass": false,
@@ -1214,8 +1214,8 @@
                                 "estack": "AssertionError: Timed out retrying: Expected to find content: '(1)' within the element: <span.cart-qty> but never did.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:755:31)",
                                 "diff": null
                               },
-                              "uuid": "65b1ac6e-92d9-4710-bb08-3e10c16bc58c",
-                              "parentUUID": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                              "uuid": "7e3bc652-30e7-48e3-8f23-cc43cbddafc6",
+                              "parentUUID": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                               "isHook": false,
                               "skipped": false
                             },
@@ -1223,7 +1223,7 @@
                               "title": "WHEN the `Add to wish` icon is clicked THEN the product is added to the Wish List",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination area - Product Results Grid GIVEN `$100 Physical Gift Card` (without the quotes) was searched for in the Middle Search Bar WHEN the `Add to wish` icon is clicked THEN the product is added to the Wish List",
                               "timedOut": null,
-                              "duration": 6935,
+                              "duration": 6993,
                               "state": "failed",
                               "speed": null,
                               "pass": false,
@@ -1236,8 +1236,8 @@
                                 "estack": "AssertionError: Timed out retrying: Expected to find content: '(1)' within the element: <span.wishlist-qty> but never did.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:759:27)",
                                 "diff": null
                               },
-                              "uuid": "ec016d52-5294-4574-aab8-ce14329642f0",
-                              "parentUUID": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                              "uuid": "d8eeceae-4b95-4182-95b0-16d531b2b2a7",
+                              "parentUUID": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                               "isHook": false,
                               "skipped": false
                             },
@@ -1254,8 +1254,8 @@
                               "context": null,
                               "code": "",
                               "err": {},
-                              "uuid": "886d9c24-dd51-4eba-bfba-f3039252bc41",
-                              "parentUUID": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                              "uuid": "057739e0-9d9e-416c-b878-8657862481fe",
+                              "parentUUID": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                               "isHook": false,
                               "skipped": false
                             },
@@ -1263,7 +1263,7 @@
                               "title": "WHEN the `Add to compare list` icon is clicked THEN the product is added to the Compare List",
                               "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Product Selectors and Pagination area - Product Results Grid GIVEN `$100 Physical Gift Card` (without the quotes) was searched for in the Middle Search Bar WHEN the `Add to compare list` icon is clicked THEN the product is added to the Compare List",
                               "timedOut": null,
-                              "duration": 2287,
+                              "duration": 2229,
                               "state": "passed",
                               "speed": "slow",
                               "pass": true,
@@ -1272,8 +1272,8 @@
                               "context": null,
                               "code": "firstProductAddToCompareList();\ncy.visit('https://demo.nopcommerce.com/compareproducts');\ncy.contains(SPECIFIC_PRODUCT_NAME);\ncy.get('.product-name').children().should('have.length', 2);",
                               "err": {},
-                              "uuid": "8bbc9f24-8100-477b-b6d1-2ada615e147f",
-                              "parentUUID": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                              "uuid": "5255a835-a30f-473c-9196-3e61bd6ca89b",
+                              "parentUUID": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                               "isHook": false,
                               "skipped": false
                             },
@@ -1290,28 +1290,28 @@
                               "context": null,
                               "code": "",
                               "err": {},
-                              "uuid": "159d2c2b-81ab-4bb4-b448-396b36389ecb",
-                              "parentUUID": "34a187db-258e-4f5c-bc7b-d00f1b9ae24d",
+                              "uuid": "ed2994a5-81e2-43c6-b62d-52a04282875d",
+                              "parentUUID": "c66c0c4f-2618-4079-85d3-789a428a8ce4",
                               "isHook": false,
                               "skipped": false
                             }
                           ],
                           "suites": [],
                           "passes": [
-                            "4635bcb0-3d04-4a06-8a0c-0d4ed0495d19",
-                            "2cf48151-953e-4e52-8ac0-ca84d56fde7b",
-                            "8bbc9f24-8100-477b-b6d1-2ada615e147f"
+                            "559533a1-d36b-4482-be2e-3308823daf72",
+                            "b0b44efb-70ea-4a9d-b5d0-b3202d8b0fc6",
+                            "5255a835-a30f-473c-9196-3e61bd6ca89b"
                           ],
                           "failures": [
-                            "65b1ac6e-92d9-4710-bb08-3e10c16bc58c",
-                            "ec016d52-5294-4574-aab8-ce14329642f0"
+                            "7e3bc652-30e7-48e3-8f23-cc43cbddafc6",
+                            "d8eeceae-4b95-4182-95b0-16d531b2b2a7"
                           ],
                           "pending": [
-                            "886d9c24-dd51-4eba-bfba-f3039252bc41",
-                            "159d2c2b-81ab-4bb4-b448-396b36389ecb"
+                            "057739e0-9d9e-416c-b878-8657862481fe",
+                            "ed2994a5-81e2-43c6-b62d-52a04282875d"
                           ],
                           "skipped": [],
-                          "duration": 22764,
+                          "duration": 21653,
                           "root": false,
                           "rootEmpty": false,
                           "_timeout": 2000
