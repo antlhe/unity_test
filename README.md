@@ -22,7 +22,7 @@ cd unity_test
 npm i
 ```
 
-#### Run the tests from the command line: 
+### Run the tests from the command line: 
 
 (requires npm@5.2.0 or greater which you should have since nodejs >= 10.0.0 is required)
 
@@ -41,7 +41,7 @@ e.g.:
 npx cypress run --browser chrome --reporter mochawesome --spec "cypress/integration/search_spec.js"
 ```
 
-#### Run the tests from Cypress UI:
+### Run the tests from Cypress UI:
 
 (requires npm@5.2.0 or greater which you should have since nodejs >= 10.0.0 is required)
 
