@@ -1,61 +1,51 @@
+// -------------------------------------
 // TEST CONSTANTS
-
-const SEARCH_TERM_MIN_LENGTH = 'Search term minimum length'
-const NO_RESULTS_FOR = 'No results for'
+// -------------------------------------
 const ONE_CHAR_RETURNING_PRODUCTS = 'c'
 const WORD_RETURNING_PRODUCTS = 'card'
 const WORD_NOT_RETURNING_PRODUCTS = 'hhhh'
 const SPECIFIC_PRODUCT_NAME = '$100 Physical Gift Card'
 const SEARCH_TERM_WILDCARD = '%%%'
 
-
-// IDs
-
-const TOP_SEARCH_TEXT_INPUT_ID = '#small-searchterms';
-const TOP_SEARCH_BUTTON_ID = 'input.button-1.search-box-button';
-const TOP_SEARCH_AUTOCOMPLETE_ID = '#ui-id-1 > li:nth-child(1)';
-
-const PRODUCT_GRID_ID = 'div.product-grid';
-const NO_RESULT_ID = 'div.no-result';
-
-const MIDDLE_SEARCH_TEXT_INPUT_ID = '#q';
-const MIDDLE_SEARCH_BUTTON_ID = 'input.button-1.search-button';
-
+// -------------------------------------
 // REQUIREMENTS DATA
-
+// -------------------------------------
+const SEARCH_TERM_MIN_LENGTH = 'Search term minimum length'
+const NO_RESULTS_FOR = 'No results for'
 const REQUIRED_CATEGORIES = ["All", "Computers", "Computers >> Desktops", "Computers >> Notebooks", "Computers >> Software", "Electronics", "Electronics >> Camera & photo", "Electronics >> Cell phones", "Electronics >> Others", "Apparel", "Apparel >> Shoes", "Apparel >> Clothing", "Apparel >> Accessories", "Digital downloads", "Books", "Jewelry", "Gift Cards"]
 const REQUIRED_MANUFACTURERS = ["All", "Apple", "Lenovo", "Nokia"]
 const REQUIRED_PRODUCTS_SORT_BY_OPTIONS = ["Position", "Name: A to Z", "Name: Z to A", "Price: Low to High", "Price: High to Low", "Created on"]
 const REQUIRED_PRODUCTS_PAGE_SIZE_OPTIONS = ["10", "20", "50", "100"]
 
-
-// HELPER FUNCTIONS
+// -------------------------------------
+// HELPER FUNCTIONS and IDs
+// -------------------------------------
 
 // TOP SEARCH BAR
 
 function typeTopSearch(text) {
-    cy.get(TOP_SEARCH_TEXT_INPUT_ID).type(text)
+    cy.get('#small-searchterms').type(text)
 }
 
 function searchTopSearch(text) {
     typeTopSearch(text)
-    cy.get(TOP_SEARCH_BUTTON_ID).click()
+    cy.get('.search-box-button').click()
 }
 
 function getTopSearchAutocompleteItem() {
-    return cy.get(TOP_SEARCH_AUTOCOMPLETE_ID)
+    return cy.get('#ui-id-1 > li:nth-child(1)')
 }
 
 
 // MIDDLE SEARCH BAR
 
 function typeMiddleSearch(text) {
-    cy.get(MIDDLE_SEARCH_TEXT_INPUT_ID).type(text)
+    cy.get('#q').type(text)
 }
 
 function searchMiddleSearch(text) {
     typeMiddleSearch(text)
-    cy.get(MIDDLE_SEARCH_BUTTON_ID).click()
+    cy.get('.search-button').click()
 }
 
 function getCategorySelector() {
@@ -90,11 +80,11 @@ function enterPriceRangeTo(text) {
 // SEARCH RESULTS
 
 function getNoResult() {
-    return cy.get(NO_RESULT_ID)
+    return cy.get('div.no-result')
 }
 
 function getProductGrid() {
-    return cy.get(PRODUCT_GRID_ID)
+    return cy.get('div.product-grid')
 }
 
 function getProductOrderBySelector() {
@@ -115,15 +105,61 @@ function getProductPageSizeOptions() {
 
 function getProductTitlesInGrid() {
     return cy.get('div.item-grid').children().children().children('div.details').children('h2.product-title').children()
-} 
+}
 
 function getProductPricesInGrid() {
     return cy.get('div.item-grid').children().children().children('div.details').children('div.add-info').children('div.prices').children('span.price.actual-price')
-
-} 
-
+}
 
 
+function clickOnPaginationPageNum(pageNum) {
+    cy.get('div.pager > ul > li:nth-child(' + pageNum + ')').click()
+}
+
+function clickOnNextPaginationPage() {
+    cy.get('li.next-page').click()
+}
+
+function clickOnLastPaginationPage() {
+    cy.get('li.last-page').click()
+}
+
+function clickOnPreviousPaginationPage() {
+    cy.get('li.previous-page').click()
+}
+
+function clickOnFirstPaginationPage() {
+    cy.get('li.first-page').click()
+}
+
+function clickOnFirstProductImage() {
+    cy.get('div.item-grid').children().children().first('div.picture').click()
+}
+
+function clickOnFirstProductTitle() {
+    cy.get('div.item-grid').children().children().first('div.details').click()
+}
+
+function firstProductAddToShoppingCart() {
+    cy.get('.product-box-add-to-cart-button').click()
+}
+
+function getShoppingCart() {
+    return cy.get('.cart-qty')
+}
+
+function firstProductAddToWishList() {
+    cy.get('.add-to-wishlist-button').click()
+}
+
+function getWishList() {
+    return cy.get('.wishlist-qty')
+}
+
+function firstProductAddToCompareList() {
+    cy.get('.add-to-compare-list-button').click()
+    cy.contains('The product has been added to your product comparison')
+}
 
 // PRODUCT PAGE
 
@@ -131,60 +167,69 @@ function getProductPageProductName() {
     return cy.get('div.product-name > h1')
 }
 
-//todo unskip
+
+// -------------------------------------
+// TESTS
+// -------------------------------------
 
 describe('nopCommerce', () => {
 
-    context('Search Feature', () => {
+    context('GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=)', () => {
         beforeEach(() => {
             cy.visit('https://demo.nopcommerce.com/search?q=')
         })
 
-        context('Top Search', () => {
+        context('area - Top Search Bar', () => {
 
-            context('Search', () => {
-
-                it('should return some products WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS, () => {
+            context('fonctionality - Search', () => {
+            
+                it.only('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
                     searchTopSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
                     cy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist')
                 })
 
-                it('should return some products WHEN searching with a relevant word: ' + WORD_RETURNING_PRODUCTS, () => {
+                it('WHEN searching with a relevant word: ' + WORD_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
+                    //this test can be skipped when the above test case will be fixed
                     searchTopSearch(WORD_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
                 })
 
-                it('should NOT return products AND should display `No results for <search_criteria>` WHEN searching with an irrelevant word: ' + WORD_NOT_RETURNING_PRODUCTS, () => {
+                it('WHEN searching with an irrelevant word: ' + WORD_NOT_RETURNING_PRODUCTS + ' THEN search results return 0 products', () => {
                     searchTopSearch(WORD_NOT_RETURNING_PRODUCTS)
                     getProductGrid().should('not.exist')
+                })
+
+                it('WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed', () => {
+                    searchTopSearch(WORD_NOT_RETURNING_PRODUCTS)
                     getNoResult().should('have.text', NO_RESULTS_FOR + " " + WORD_NOT_RETURNING_PRODUCTS)
                 })
 
-                it('should fill in Middle Search Bar input text value after having search in Top Search Bar', () => {
+                it('WHEN searching with the Top Search Bar THEN the Middle Search Bar input text should be filled with the search term', () => {
                     searchTopSearch(WORD_RETURNING_PRODUCTS)
                     cy.get('#q').should('have.value', WORD_RETURNING_PRODUCTS)
                 })
             })
 
-            context('Autocomplete', () => {
+            context('fonctionality - Autocomplete', () => {
 
-                it('should display a list of products (autocomplete) WHEN inputting 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS, () => {
+                it('WHEN typing 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN autocomplete shows a list of products', () => {
                     typeTopSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getTopSearchAutocompleteItem().should('exist')
                 })
-
-                it('should display a list of products (autocomplete) WHEN inputting a relevant word: ' + WORD_RETURNING_PRODUCTS, () => {
+                
+                it('WHEN typing a relevant word: ' + WORD_RETURNING_PRODUCTS + ' THEN autocomplete shows a list of products', () => {
+                    //this test can be skipped when the above test case will be fixed
                     typeTopSearch(WORD_RETURNING_PRODUCTS)
                     getTopSearchAutocompleteItem().should('exist')
                 })
-
-                it('should NOT display a list of products (autocomplete) WHEN inputting an irrelevant word: ' + WORD_NOT_RETURNING_PRODUCTS, () => {
+                
+                it('WHEN typing an irrelevant word: ' + WORD_NOT_RETURNING_PRODUCTS + ' THEN autocomplete does not show a list of products', () => {
                     typeTopSearch(WORD_NOT_RETURNING_PRODUCTS)
                     getTopSearchAutocompleteItem().should('not.exist')
                 })
 
-                it('should open the product page WHEN clicking an item in the autocomplete list of product(s)', () => {
+                it('WHEN clicking an item in the autocomplete list of products THEN the user is taken to that product\'s page', () => {
                     typeTopSearch(SPECIFIC_PRODUCT_NAME)
                     getTopSearchAutocompleteItem().click()
                     getProductPageProductName().contains(SPECIFIC_PRODUCT_NAME)
@@ -194,35 +239,36 @@ describe('nopCommerce', () => {
 
         })
 
-        context('Middle Search', () => {
+        context('area - Middle Search Bar', () => {
 
-            context('Search', () => {
+            context('functionality - Search', () => {
 
-                // debateable: behaviour could be to not search at all (as per Top Search Bar behaviour), or to display all products
-                it('should display a `minimum length ...` warning message WHEN searching with 0 character', () => {
-                    cy.get(MIDDLE_SEARCH_BUTTON_ID).click()
+                it('WHEN searching with 0 character THEN a `search term minimum length` warning message is displayed', () => {
+                    cy.get('input.button-1.search-button').click()
                     cy.contains(SEARCH_TERM_MIN_LENGTH).should('exist')
                 })
 
-                it('should return some products WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS, () => {
+                // Although the following 3 test cases are similar in effect to when searching with the Top Bar seach
+                it('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
                     searchMiddleSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
                     cy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist')
                 })
 
-                it('should return some products WHEN searching with a relevant word: ' + WORD_RETURNING_PRODUCTS, () => {
+                it('WHEN searching with a relevant word: ' + WORD_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
+                    //this test can be skipped when the above test case will be fixed
                     searchMiddleSearch(WORD_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
                 })
 
-                it('should NOT return products AND should display `No results for <search_criteria>` WHEN searching with an irrelevant word: ' + WORD_NOT_RETURNING_PRODUCTS, () => {
+                it('WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed', () => {
                     searchMiddleSearch(WORD_NOT_RETURNING_PRODUCTS)
                     getProductGrid().should('not.exist')
                     getNoResult().should('have.text', NO_RESULTS_FOR + " " + WORD_NOT_RETURNING_PRODUCTS)
                 })
             })
 
-            context('Advanced Search', () => {
+            context('Advanced Search: STEP - check Advanced Search checkbox', () => {
 
                 beforeEach(() => {
                     enableAdvancedSearch()
@@ -238,7 +284,7 @@ describe('nopCommerce', () => {
                     it('should have all the categories stated in the requirements (wireframe sketch)', () => {
                         getCategoryOptions().then(options => {
                             const actual = [...options].map(o => o.text)
-                            //toString() for better error reporting
+                            
                             expect(actual.sort().toString()).to.eq(REQUIRED_CATEGORIES.sort().toString())
                         })
                     })
@@ -247,7 +293,6 @@ describe('nopCommerce', () => {
                         getCategoryOptions().then(options => {
                             const actual = [...options].map(o => o.text)
                             const actualSorted = [...actual].sort()
-                            //toString() for better error reporting
                             expect(actual.toString()).to.eq(actualSorted.toString())
                         })
                     })
@@ -286,7 +331,7 @@ describe('nopCommerce', () => {
                     it('should have all the manufacturers stated in the requirements (wireframe sketch)', () => {
                         cy.get('#mid').children('option').then(options => {
                             const actual = [...options].map(o => o.text)
-                            //toString() for better error reporting
+                            
                             expect(actual.sort().toString()).to.eq(REQUIRED_MANUFACTURERS.sort().toString())
                         })
                     })
@@ -361,7 +406,7 @@ describe('nopCommerce', () => {
 
         context('Search Results', () => {
 
-            context('Product Selectors', () => {
+            context('Product Selectors: STEP - Search for `%%%` (without the quotes) in the Middle Search Bar', () => {
 
                 beforeEach(() => {
                     searchMiddleSearch(SEARCH_TERM_WILDCARD)
@@ -369,32 +414,29 @@ describe('nopCommerce', () => {
 
                 context('Products Sort By', () => {
 
-                    //Sort by Position: not clear what this means
-                    //Sort by Created on: I don't have access to this information 
 
-                    it('should have all the Products Sort By options in the correct order and as stated in the requirements (wireframe sketch)', () => {
+                    it('should have all the Products Sort By options as stated in the requirements (wireframe sketch)', () => {
                         getProductOrderByOptions().then(options => {
                             const actual = [...options].map(o => o.text)
-                            expect(actual).to.deep.eq(REQUIRED_PRODUCTS_SORT_BY_OPTIONS)
+                            expect(actual.toString()).to.eq(REQUIRED_PRODUCTS_SORT_BY_OPTIONS.toString())
                         })
                     })
 
                     it('should sort the products alphabetically WHEN selecting `Name: A to Z` Products Sort By option', () => {
                         getProductOrderBySelector().select('Name: A to Z');
                         getProductTitlesInGrid().then(productTitles => {
-                            const productTitlesArray = [...productTitles].map(o => o.text)
+                            // .toUpperCase() because javascript sort logic is different to the site's with regard to handling lower cases, whilst the later is still valid
+                            const productTitlesArray = [...productTitles].map(o => o.text.toUpperCase())
                             const productTitlesArraySorted = [...productTitlesArray].sort()
-                            //toString() for better error reporting
                             expect(productTitlesArray.toString()).to.eq(productTitlesArraySorted.toString())
                         })
                     })
 
-                    it.only('should sort the products in reverse alphabetical order WHEN selecting `Name: A to Z` Products Sort By option', () => {
+                    it('should sort the products in reverse alphabetical order WHEN selecting `Name: A to Z` Products Sort By option', () => {
                         getProductOrderBySelector().select('Name: Z to A');
                         getProductTitlesInGrid().then(productTitles => {
-                            const productTitlesArray = [...productTitles].map(o => o.text)
+                            const productTitlesArray = [...productTitles].map(o => o.text.toUpperCase())
                             const productTitlesArraySorted = [...productTitlesArray].sort().reverse()
-                            //toString() for better error reporting
                             expect(productTitlesArray.toString()).to.eq(productTitlesArraySorted.toString())
                         })
                     })
@@ -413,13 +455,10 @@ describe('nopCommerce', () => {
                                 }
                                 productPricesArray.push(price)
                             }
-
                             const productPricesArraySorted = [...productPricesArray].sort(function (a, b) {
                                 return a - b;
                             })
-                            //toString() for better error reporting
                             expect(productPricesArray.toString()).to.eq(productPricesArraySorted.toString())
-
                         })
                     })
 
@@ -437,13 +476,10 @@ describe('nopCommerce', () => {
                                 }
                                 productPricesArray.push(price)
                             }
-
                             const productPricesArraySorted = [...productPricesArray].sort(function (a, b) {
                                 return a - b;
                             }).reverse()
-                            //toString() for better error reporting
                             expect(productPricesArray.toString()).to.eq(productPricesArraySorted.toString())
-
                         })
                     })
                 })
@@ -451,10 +487,10 @@ describe('nopCommerce', () => {
 
                 context('Products Page Size', () => {
 
-                    it('should have all the `show x results per page` options in the correct order and as stated in the requirements (wireframe sketch)', () => {
+                    it('should have all the `show x results per page` options as stated in the requirements (wireframe sketch)', () => {
                         getProductPageSizeOptions().then(options => {
                             const actual = [...options].map(o => o.text)
-                            expect(actual).to.deep.eq(REQUIRED_PRODUCTS_PAGE_SIZE_OPTIONS)
+                            expect(actual.toString()).to.eq(REQUIRED_PRODUCTS_PAGE_SIZE_OPTIONS.toString())
                         })
                     })
 
@@ -464,36 +500,37 @@ describe('nopCommerce', () => {
                         cy.get('div.item-grid').children().should('have.length', 3)
                     })
 
-                    context('Pagination', () => {
+                    context('Pagination: STEP - Click on the 3rd pagination page', () => {
 
                         beforeEach(() => {
                             getProductPageSizeSelector().select('3')
                         })
 
                         it('should navigate to the correct page WHEN selecting a numbered pagination page (e.g. `3`)', () => {
-                            cy.get('div.pager > ul > li:nth-child(3)').click();
-                            cy.url().should('include', 'pagenumber=3')
+                            const pageNum = 3
+                            clickOnPaginationPageNum(pageNum)
+                            cy.url().should('include', 'pagenumber=' + pageNum)
                         })
 
                         it('should navigate to the correct page WHEN selecting the pagination `next page` (i.e. `>`)', () => {
-                            cy.get('li.next-page').click();
+                            clickOnNextPaginationPage()
                             cy.url().should('include', 'pagenumber=2')
                         })
 
                         it('should navigate to the correct page WHEN selecting the pagination `last page` (i.e. `>>`)', () => {
-                            cy.get('li.last-page').click();
+                            clickOnLastPaginationPage()
                             cy.url().should('include', 'pagenumber=15')
                         })
 
                         it('should navigate to the correct page WHEN selecting the pagination `previous page` (i.e. `<`)', () => {
-                            cy.get('li.last-page').click();
-                            cy.get('li.previous-page').click();
+                            clickOnLastPaginationPage()
+                            clickOnPreviousPaginationPage()
                             cy.url().should('include', 'pagenumber=14')
                         })
 
                         it('should navigate to the correct page WHEN selecting the pagination `first page` (i.e. `<<`)', () => {
-                            cy.get('li.last-page').click();
-                            cy.get('li.first-page').click();
+                            clickOnLastPaginationPage()
+                            clickOnFirstPaginationPage()
                             cy.url().should('not.include', 'pagenumber')
                         })
 
@@ -501,48 +538,42 @@ describe('nopCommerce', () => {
                 })
             })
 
-            context('Product Item', () => {
+            context('Product Item: STEP - Search for `$100 Physical Gift Card` (without the quotes) in the Middle Search Bar', () => {
 
                 beforeEach(() => {
-                    // searchMiddleSearch(SPECIFIC_PRODUCT_NAME)
-
-                    cy.visit('https://demo.nopcommerce.com/search?q=%24100+Physical+Gift+Card&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false')
+                    searchMiddleSearch(SPECIFIC_PRODUCT_NAME)
+                    // cy.visit('https://demo.nopcommerce.com/search?q=%24100+Physical+Gift+Card&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false')
                 })
 
                 it('should navigate to the product page WHEN clicking on a product image', () => {
-                    cy.get('div.item-grid').children().children().first('div.picture').click()
+                    clickOnFirstProductImage()
                     getProductPageProductName().contains(SPECIFIC_PRODUCT_NAME)
                 })
 
-                it('should navigate to the product page WHEN clicking on a product image', () => {
-                    cy.get('div.item-grid').children().children().first('div.details').click()
+                it('should navigate to the product page WHEN clicking on a product title', () => {
+                    clickOnFirstProductTitle()
                     getProductPageProductName().contains(SPECIFIC_PRODUCT_NAME)
                 })
 
                 it('should add the product to the Cart WHEN the `Add to Cart` button is clicked', () => {
-
-                    // STEP: `Add to Cart` button is clicked
-                    cy.get('.product-box-add-to-cart-button').click()
-
-                    // STEP: Assert Shopping Cart contains 1 item
-                    cy.get('.cart-qty').contains('(1)')
+                    firstProductAddToShoppingCart()
+                    getShoppingCart().contains('(1)')
                 })
 
                 it('should add the product to the Wish List WHEN the `Add to wish` icon is clicked', () => {
-                    cy.get('.add-to-wishlist-button').click()
-                    cy.get('.wishlist-qty').contains('(1)')
+                    firstProductAddToWishList()
+                    getWishList().contains('(1)')
                 })
 
                 // Arguably this is testing the Wish List logic and not the Search Feature and its content
                 it.skip('should only add the product to the Wish List ONCE WHEN the `Add to wish` icon is clicked TWICE', () => {
-                    cy.get('.add-to-wishlist-button').click()
-                    cy.get('.add-to-wishlist-button').click()
-                    cy.get('.wishlist-qty').contains('(1)')
+                    firstProductAddToWishList()
+                    firstProductAddToWishList()
+                    getWishList().contains('(1)')
                 })
 
                 it('should add the product to the Compare List WHEN the `Add to compare list` icon is clicked', () => {
-                    cy.get('.add-to-compare-list-button').click()
-                    cy.contains('The product has been added to your product comparison')
+                    firstProductAddToCompareList()
                     cy.visit('https://demo.nopcommerce.com/compareproducts')
                     cy.contains(SPECIFIC_PRODUCT_NAME)
                     cy.get('.product-name').children().should('have.length', 2)
@@ -550,10 +581,8 @@ describe('nopCommerce', () => {
 
                 // Arguably this is testing the Wish List logic and not the Search Feature and its content
                 it.skip('should only add the product to the Compare List WHEN the `Add to compare list` icon is clicked TWICE', () => {
-                    cy.get('.add-to-compare-list-button').click()
-                    cy.contains('The product has been added to your product comparison')
-                    cy.get('.add-to-compare-list-button').click()
-                    cy.contains('The product has been added to your product comparison')
+                    firstProductAddToCompareList()
+                    firstProductAddToCompareList()
                     cy.visit('https://demo.nopcommerce.com/compareproducts')
                     cy.contains(SPECIFIC_PRODUCT_NAME)
                     cy.get('.product-name').children().should('have.length', 2)

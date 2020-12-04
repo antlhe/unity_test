@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 3,
-    "tests": 1,
-    "passes": 0,
+    "suites": 4,
+    "tests": 5,
+    "passes": 3,
     "pending": 0,
-    "failures": 1,
-    "start": "2020-12-03T17:29:21.309Z",
-    "end": "2020-12-03T17:29:31.035Z",
-    "duration": 9726,
-    "testsRegistered": 1,
-    "passPercent": 0,
+    "failures": 2,
+    "start": "2020-12-04T11:35:43.443Z",
+    "end": "2020-12-04T11:36:04.568Z",
+    "duration": 21125,
+    "testsRegistered": 5,
+    "passPercent": 60,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "d561ad82-efc5-47f9-9c4a-004692ff605f",
+      "uuid": "b4f47683-3ab0-4956-b108-d2e5cdc2fd36",
       "title": "",
       "fullFile": "cypress/integration/search_spec.js",
       "file": "cypress/integration/search_spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "2d32ad0c-5e55-4c2e-be70-44e378bdd780",
+          "uuid": "ce35269c-c275-41dd-83a7-3e4c54695ff6",
           "title": "nopCommerce",
           "fullFile": "",
           "file": "",
@@ -36,8 +36,8 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "6b6b51e9-5d58-4565-be8b-e5ed4a34b135",
-              "title": "Search Feature",
+              "uuid": "84dba18d-46dd-4db5-b4c8-d7d37ebf752d",
+              "title": "GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=)",
               "fullFile": "",
               "file": "",
               "beforeHooks": [],
@@ -45,44 +45,144 @@
               "tests": [],
               "suites": [
                 {
-                  "uuid": "73b5ffce-55bc-46bf-9639-633a3dbc6c3a",
-                  "title": "Product Item Box",
+                  "uuid": "c3ab2abe-b76a-49bc-99f2-c543333a7afb",
+                  "title": "area - Top Search Bar",
                   "fullFile": "",
                   "file": "",
                   "beforeHooks": [],
                   "afterHooks": [],
-                  "tests": [
+                  "tests": [],
+                  "suites": [
                     {
-                      "title": "should add the product to the Cart WHEN the `Add to Cart` button is clicked",
-                      "fullTitle": "nopCommerce Search Feature Product Item Box should add the product to the Cart WHEN the `Add to Cart` button is clicked",
-                      "timedOut": null,
-                      "duration": 7856,
-                      "state": "failed",
-                      "speed": null,
-                      "pass": false,
-                      "fail": true,
-                      "pending": false,
-                      "context": null,
-                      "code": "// STEP: `Add to Cart` button is clicked\ncy.get('.product-box-add-to-cart-button').click(); // STEP: Assert Shopping Cart contains 1 item\ncy.get('.cart-qty').contains('(1)');",
-                      "err": {
-                        "message": "AssertionError: Timed out retrying: Expected to find content: '(1)' within the element: <span.cart-qty> but never did.",
-                        "estack": "AssertionError: Timed out retrying: Expected to find content: '(1)' within the element: <span.cart-qty> but never did.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:732:29)",
-                        "diff": null
-                      },
-                      "uuid": "215a1a31-58d4-4df2-aed6-8f7cdcc17cdf",
-                      "parentUUID": "73b5ffce-55bc-46bf-9639-633a3dbc6c3a",
-                      "isHook": false,
-                      "skipped": false
+                      "uuid": "1d22b74f-59d0-4261-aa20-3d1345790136",
+                      "title": "feature - Search",
+                      "fullFile": "",
+                      "file": "",
+                      "beforeHooks": [],
+                      "afterHooks": [],
+                      "tests": [
+                        {
+                          "title": "WHEN searching with 1 relevant character: c THEN search results include some products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar feature - Search WHEN searching with 1 relevant character: c THEN search results include some products",
+                          "timedOut": null,
+                          "duration": 6178,
+                          "state": "failed",
+                          "speed": null,
+                          "pass": false,
+                          "fail": true,
+                          "pending": false,
+                          "context": null,
+                          "code": "searchTopSearch(ONE_CHAR_RETURNING_PRODUCTS);\ngetProductGrid().should('exist');\ncy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist');",
+                          "err": {
+                            "message": "AssertionError: Timed out retrying: Expected to find element: `div.product-grid`, but never found it.",
+                            "estack": "AssertionError: Timed out retrying: Expected to find element: `div.product-grid`, but never found it.\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:410:28)",
+                            "diff": null
+                          },
+                          "uuid": "9747b19e-d352-4826-888f-22672a35ae38",
+                          "parentUUID": "1d22b74f-59d0-4261-aa20-3d1345790136",
+                          "isHook": false,
+                          "skipped": false
+                        },
+                        {
+                          "title": "WHEN searching with a relevant word: card THEN search results include some products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar feature - Search WHEN searching with a relevant word: card THEN search results include some products",
+                          "timedOut": null,
+                          "duration": 2249,
+                          "state": "passed",
+                          "speed": "slow",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "//this test can be skipped when the above test case passes\nsearchTopSearch(WORD_RETURNING_PRODUCTS);\ngetProductGrid().should('exist');",
+                          "err": {},
+                          "uuid": "ce18a5bb-7f28-4cce-97d4-d858dff2c22b",
+                          "parentUUID": "1d22b74f-59d0-4261-aa20-3d1345790136",
+                          "isHook": false,
+                          "skipped": false
+                        },
+                        {
+                          "title": "WHEN searching with an irrelevant word: hhhh THEN search results return 0 products",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar feature - Search WHEN searching with an irrelevant word: hhhh THEN search results return 0 products",
+                          "timedOut": null,
+                          "duration": 1472,
+                          "state": "passed",
+                          "speed": "slow",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "searchTopSearch(WORD_NOT_RETURNING_PRODUCTS);\ngetProductGrid().should('not.exist');",
+                          "err": {},
+                          "uuid": "c2ede126-4a1b-4fb3-96d7-57972d3ed4ce",
+                          "parentUUID": "1d22b74f-59d0-4261-aa20-3d1345790136",
+                          "isHook": false,
+                          "skipped": false
+                        },
+                        {
+                          "title": "WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar feature - Search WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed",
+                          "timedOut": null,
+                          "duration": 5872,
+                          "state": "failed",
+                          "speed": null,
+                          "pass": false,
+                          "fail": true,
+                          "pending": false,
+                          "context": null,
+                          "code": "searchTopSearch(WORD_NOT_RETURNING_PRODUCTS);\ngetNoResult().should('have.text', NO_RESULTS_FOR + \" \" + WORD_NOT_RETURNING_PRODUCTS);",
+                          "err": {
+                            "message": "AssertionError: Timed out retrying: expected '<div.no-result>' to have text 'No results for hhhh', but the text was 'No products were found that matched your criteria.'",
+                            "estack": "AssertionError: Timed out retrying: expected '<div.no-result>' to have text 'No results for hhhh', but the text was 'No products were found that matched your criteria.'\n    at Context.eval (https://demo.nopcommerce.com/__cypress/tests?p=cypress/integration/search_spec.js:424:25)",
+                            "diff": "- 'No products were found that matched your criteria.'\n+ 'No results for hhhh'\n"
+                          },
+                          "uuid": "9a86ba0b-5cbd-40c1-bde1-da4b332e0e66",
+                          "parentUUID": "1d22b74f-59d0-4261-aa20-3d1345790136",
+                          "isHook": false,
+                          "skipped": false
+                        },
+                        {
+                          "title": "WHEN searching with the Top Search Bar THEN the Middle Search Bar input text should be filled with the search term",
+                          "fullTitle": "nopCommerce GIVEN the nopCommerce Search page is accessed (https://demo.nopcommerce.com/search?q=) area - Top Search Bar feature - Search WHEN searching with the Top Search Bar THEN the Middle Search Bar input text should be filled with the search term",
+                          "timedOut": null,
+                          "duration": 2288,
+                          "state": "passed",
+                          "speed": "slow",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "searchTopSearch(WORD_RETURNING_PRODUCTS);\ncy.get('#q').should('have.value', WORD_RETURNING_PRODUCTS);",
+                          "err": {},
+                          "uuid": "a12f3427-83d4-4502-9843-37d3993b4e09",
+                          "parentUUID": "1d22b74f-59d0-4261-aa20-3d1345790136",
+                          "isHook": false,
+                          "skipped": false
+                        }
+                      ],
+                      "suites": [],
+                      "passes": [
+                        "ce18a5bb-7f28-4cce-97d4-d858dff2c22b",
+                        "c2ede126-4a1b-4fb3-96d7-57972d3ed4ce",
+                        "a12f3427-83d4-4502-9843-37d3993b4e09"
+                      ],
+                      "failures": [
+                        "9747b19e-d352-4826-888f-22672a35ae38",
+                        "9a86ba0b-5cbd-40c1-bde1-da4b332e0e66"
+                      ],
+                      "pending": [],
+                      "skipped": [],
+                      "duration": 18059,
+                      "root": false,
+                      "rootEmpty": false,
+                      "_timeout": 2000
                     }
                   ],
-                  "suites": [],
                   "passes": [],
-                  "failures": [
-                    "215a1a31-58d4-4df2-aed6-8f7cdcc17cdf"
-                  ],
+                  "failures": [],
                   "pending": [],
                   "skipped": [],
-                  "duration": 7856,
+                  "duration": 0,
                   "root": false,
                   "rootEmpty": false,
                   "_timeout": 2000
