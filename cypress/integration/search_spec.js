@@ -249,11 +249,12 @@ describe('nopCommerce', () => {
                     cy.contains(SEARCH_TERM_MIN_LENGTH).should('exist')
                 })
 
-                // Although the following 3 test cases are similar in effect to when searching with the Top Bar seach
-                // I believe they are still valid as the url created through the search is different, e.g.:
-                // with the Top Bar seach: https://demo.nopcommerce.com/search?q=card
-                // with the Middle Bar seach: https://demo.nopcommerce.com/search?q=card&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false
+
                 it('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
+                    // Although this test cases (and the one below which we'll be able to skip upon fixing this failing test) are similar in effect to when searching with the Top Bar seach
+                    // I believe they are still valid as the url created through the search is different, e.g.:
+                    // with the Top Bar seach: https://demo.nopcommerce.com/search?q=c
+                    // with the Middle Bar seach: https://demo.nopcommerce.com/search?q=c&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false
                     searchMiddleSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
                     cy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist')
@@ -265,11 +266,6 @@ describe('nopCommerce', () => {
                     getProductGrid().should('exist')
                 })
 
-                it('WHEN search results return 0 products THEN `No results for <search_criteria>` is displayed', () => {
-                    searchMiddleSearch(WORD_NOT_RETURNING_PRODUCTS)
-                    getProductGrid().should('not.exist')
-                    getNoResult().should('have.text', NO_RESULTS_FOR + " " + WORD_NOT_RETURNING_PRODUCTS)
-                })
             })
 
             context('GIVEN the Advanced Search checkbox is checked', () => {
@@ -316,7 +312,7 @@ describe('nopCommerce', () => {
                     it('WHEN selecting a top category AND the `Automatically search sub categories` checkbox is NOT checked THEN search does NOT return products from this category\'s sub-categories', () => {
                         getCategorySelector().select('Computers')
                         searchMiddleSearch('apple')
-                        getProductGrid().contains('Apple MacBook Pro 13-inch').should('not.exist')
+                        getProductGrid().should('not.exist')
                     })
 
                     it('WHEN selecting a top category AND the `Automatically search sub categories` checkbox is checked THEN search returns products from this category\'s sub-categories', () => {
@@ -354,20 +350,6 @@ describe('nopCommerce', () => {
 
                 context('functionality - Price Range', () => {
 
-                    it('WHEN the price range values are invalid (non-numerical) THEN search returns no products', () => {
-                        enterPriceRangeFrom('a')
-                        enterPriceRangeTo('b')
-                        searchMiddleSearch('inch')
-                        getProductGrid().should('not.exist')
-                    })
-
-                    it('WHEN the price range values are logically invalid (price from higher than price to) THEN search returns no products', () => {
-                        enterPriceRangeFrom('10')
-                        enterPriceRangeTo('0')
-                        searchMiddleSearch('inch')
-                        getProductGrid().should('not.exist')
-                    })
-
                     it('WHEN the price range values are valid THEN search only returns products within the Price Range', () => {
                         enterPriceRangeFrom('40')
                         enterPriceRangeTo('1500')
@@ -375,6 +357,20 @@ describe('nopCommerce', () => {
                         getProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
                         getProductGrid().contains('Apple MacBook Pro 13-inch').should('not.exist')
                         getProductGrid().contains('Universal 7-8 Inch Tablet Cover').should('not.exist')
+                    })
+
+                    it('WHEN the price range values are invalid (non-numerical) THEN search dismisses those values (and acts as if no price range values were entered)', () => {
+                        enterPriceRangeFrom('a')
+                        enterPriceRangeTo('b')
+                        searchMiddleSearch('inch')
+                        getProductGrid().should('exist')
+                    })
+
+                    it('WHEN the price range values are LOGICALLY invalid (price from higher than price to) THEN search returns no products', () => {
+                        enterPriceRangeFrom('10')
+                        enterPriceRangeTo('0')
+                        searchMiddleSearch('inch')
+                        getProductGrid().should('not.exist')
                     })
 
                     it('WHEN only one price range value is entered (and is valid) THEN the price range filtering still functions and search only returns products accordingly', () => {
@@ -516,7 +512,7 @@ describe('nopCommerce', () => {
                             cy.url().should('include', 'pagenumber=' + pageNum)
                         })
 
-                        it.only('WHEN clicking on the pagination `next page` (i.e. `>`) THEN the user is taken to the correct (2nd) pagination page', () => {
+                        it('WHEN clicking on the pagination `next page` (i.e. `>`) THEN the user is taken to the correct (2nd) pagination page', () => {
                             clickOnNextPaginationPage()
                             cy.url().should('include', 'pagenumber=2')
                         })
