@@ -17,6 +17,7 @@ const REQUIRED_MANUFACTURERS = ["All", "Apple", "Lenovo", "Nokia"]
 const REQUIRED_PRODUCTS_SORT_BY_OPTIONS = ["Position", "Name: A to Z", "Name: Z to A", "Price: Low to High", "Price: High to Low", "Created on"]
 const REQUIRED_PRODUCTS_PAGE_SIZE_OPTIONS = ["10", "20", "50", "100"]
 
+
 // -------------------------------------
 // HELPER FUNCTIONS and IDs
 // -------------------------------------
@@ -182,8 +183,8 @@ describe('nopCommerce', () => {
         context('area - Top Search Bar', () => {
 
             context('fonctionality - Search', () => {
-            
-                it.only('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
+
+                it('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
                     searchTopSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
                     cy.contains(SEARCH_TERM_MIN_LENGTH).should('not.exist')
@@ -217,13 +218,13 @@ describe('nopCommerce', () => {
                     typeTopSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getTopSearchAutocompleteItem().should('exist')
                 })
-                
+
                 it('WHEN typing a relevant word: ' + WORD_RETURNING_PRODUCTS + ' THEN autocomplete shows a list of products', () => {
                     //this test can be skipped when the above test case will be fixed
                     typeTopSearch(WORD_RETURNING_PRODUCTS)
                     getTopSearchAutocompleteItem().should('exist')
                 })
-                
+
                 it('WHEN typing an irrelevant word: ' + WORD_NOT_RETURNING_PRODUCTS + ' THEN autocomplete does not show a list of products', () => {
                     typeTopSearch(WORD_NOT_RETURNING_PRODUCTS)
                     getTopSearchAutocompleteItem().should('not.exist')
@@ -249,6 +250,9 @@ describe('nopCommerce', () => {
                 })
 
                 // Although the following 3 test cases are similar in effect to when searching with the Top Bar seach
+                // I believe they are still valid as the url created through the search is different, e.g.:
+                // with the Top Bar seach: https://demo.nopcommerce.com/search?q=card
+                // with the Middle Bar seach: https://demo.nopcommerce.com/search?q=card&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false
                 it('WHEN searching with 1 relevant character: ' + ONE_CHAR_RETURNING_PRODUCTS + ' THEN search results include some products', () => {
                     searchMiddleSearch(ONE_CHAR_RETURNING_PRODUCTS)
                     getProductGrid().should('exist')
@@ -268,28 +272,27 @@ describe('nopCommerce', () => {
                 })
             })
 
-            context('Advanced Search: STEP - check Advanced Search checkbox', () => {
+            context('GIVEN the Advanced Search checkbox is checked', () => {
 
                 beforeEach(() => {
                     enableAdvancedSearch()
                 })
 
-                it('should display the Category, Manufacturer and Price Range search features WHEN checking Advanced Search checkbox', () => {
+                it('THEN the Category, Manufacturer and Price Range search features are displayed', () => {
                     cy.get('#adv').should('be.checked')
                     cy.get('#advanced-search-block').should('be.visible')
                 })
 
-                context('Category', () => {
+                context('functionality - Category', () => {
 
-                    it('should have all the categories stated in the requirements (wireframe sketch)', () => {
+                    it('THEN all the categories stated in the requirements (wireframe sketch) are present as options', () => {
                         getCategoryOptions().then(options => {
                             const actual = [...options].map(o => o.text)
-                            
                             expect(actual.sort().toString()).to.eq(REQUIRED_CATEGORIES.sort().toString())
                         })
                     })
 
-                    it('should have categories sorted alphabetically', () => {
+                    it('THEN all the categories are sorted alphabetically', () => {
                         getCategoryOptions().then(options => {
                             const actual = [...options].map(o => o.text)
                             const actualSorted = [...actual].sort()
@@ -297,26 +300,26 @@ describe('nopCommerce', () => {
                         })
                     })
 
-                    it('should return products from all categories WHEN selecting the `All` option', () => {
+                    it('WHEN selecting the `All` option THEN search returns products from all categories', () => {
                         searchMiddleSearch('apple')
                         getProductGrid().contains('Apple iCam')
                         getProductGrid().contains('Apple MacBook Pro 13-inch')
                     })
 
-                    it('should only return products from a specific sub-category WHEN selecting that sub-category option', () => {
+                    it('WHEN selecting a sub-category THEN search only returns products from that sub-category', () => {
                         getCategorySelector().select('Computers >> Notebooks')
                         searchMiddleSearch('apple')
                         getProductGrid().contains('Apple iCam').should('not.exist')
                         getProductGrid().contains('Apple MacBook Pro 13-inch')
                     })
 
-                    it('should NOT return products from a sub-category WHEN selecting the associated top category if the `Automatically search sub categories` checkbox is NOT checked', () => {
+                    it('WHEN selecting a top category AND the `Automatically search sub categories` checkbox is NOT checked THEN search does NOT return products from this category\'s sub-categories', () => {
                         getCategorySelector().select('Computers')
                         searchMiddleSearch('apple')
                         getProductGrid().contains('Apple MacBook Pro 13-inch').should('not.exist')
                     })
 
-                    it('should return products from a sub-category WHEN selecting the associated top category if the `Automatically search sub categories` checkbox is checked', () => {
+                    it('WHEN selecting a top category AND the `Automatically search sub categories` checkbox is checked THEN search returns products from this category\'s sub-categories', () => {
                         getCategorySelector().select('Computers')
                         enableAutoSearchSubCategories()
                         searchMiddleSearch('apple')
@@ -325,24 +328,22 @@ describe('nopCommerce', () => {
 
                 })
 
-                context('Manufacturer', () => {
+                context('functionality - Manufacturer', () => {
 
-                    // Missing information: not defined what "Our brand is"
-                    it('should have all the manufacturers stated in the requirements (wireframe sketch)', () => {
+                    it('THEN all the manufacturers stated in the requirements (wireframe sketch) are present as options', () => {
                         cy.get('#mid').children('option').then(options => {
                             const actual = [...options].map(o => o.text)
-                            
                             expect(actual.sort().toString()).to.eq(REQUIRED_MANUFACTURERS.sort().toString())
                         })
                     })
 
-                    it('should return products from all manufacturers WHEN selecting the `All` option', () => {
+                    it('WHEN selecting the `All` option THEN search returns products from all manufacturers', () => {
                         searchMiddleSearch('inch')
                         getProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
                         getProductGrid().contains('Apple MacBook Pro 13-inch')
                     })
 
-                    it('should only return products from a specific manufacturer WHEN selecting that manufacturer option', () => {
+                    it('WHEN selecting a manufacturer THEN search returns only products from that manufacturer', () => {
                         cy.get('#mid').select('HP')
                         searchMiddleSearch('inch')
                         getProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
@@ -351,23 +352,23 @@ describe('nopCommerce', () => {
 
                 })
 
-                context('Price Range', () => {
+                context('functionality - Price Range', () => {
 
-                    it('should return no products (or display a warning message) if the Price Range values are invalid (non-numerical)', () => {
+                    it('WHEN the price range values are invalid (non-numerical) THEN search returns no products', () => {
                         enterPriceRangeFrom('a')
                         enterPriceRangeTo('b')
                         searchMiddleSearch('inch')
                         getProductGrid().should('not.exist')
                     })
 
-                    it('should return no products (or display a warning message) if the Price Range values are logically invalid (price from higher than price to)', () => {
+                    it('WHEN the price range values are logically invalid (price from higher than price to) THEN search returns no products', () => {
                         enterPriceRangeFrom('10')
                         enterPriceRangeTo('0')
                         searchMiddleSearch('inch')
                         getProductGrid().should('not.exist')
                     })
 
-                    it('should only return products within the Price Range', () => {
+                    it('WHEN the price range values are valid THEN search only returns products within the Price Range', () => {
                         enterPriceRangeFrom('40')
                         enterPriceRangeTo('1500')
                         searchMiddleSearch('inch')
@@ -376,7 +377,7 @@ describe('nopCommerce', () => {
                         getProductGrid().contains('Universal 7-8 Inch Tablet Cover').should('not.exist')
                     })
 
-                    it('should only return products within the Price Range even if a price range value is missing', () => {
+                    it('WHEN only one price range value is entered (and is valid) THEN the price range filtering still functions and search only returns products accordingly', () => {
                         enterPriceRangeFrom('40')
                         searchMiddleSearch('inch')
                         getProductGrid().contains('HP Envy 6-1180ca 15.6-Inch Sleekbook')
@@ -386,15 +387,15 @@ describe('nopCommerce', () => {
 
                 })
 
-                context('Search In Product Descriptions option', () => {
+                context('functionality - Search In Product Descriptions', () => {
 
-                    it('should return products that have the search term in their description (but not in their title) if the Search In Product Descriptions checkbox is checked', () => {
+                    it('WHEN the Search In Product Descriptions checkbox is checked THEN search return products that have the search term either in their title or description', () => {
                         enableSearchInProductDescription()
                         searchMiddleSearch('inch')
                         getProductGrid().contains('HTC One Mini Blue')
                     })
 
-                    it('should not return products that have the search term in their description if the Search In Product Descriptions checkbox is NOT checked', () => {
+                    it('WHEN the Search In Product Descriptions checkbox is NOT checked THEN search return products that have the search term in their title', () => {
                         searchMiddleSearch('inch')
                         getProductGrid().contains('HTC One Mini Blue').should('not.exist')
                     })
@@ -404,25 +405,24 @@ describe('nopCommerce', () => {
             })
         })
 
-        context('Search Results', () => {
+        context('area - Product Selectors and Pagination', () => {
 
-            context('Product Selectors: STEP - Search for `%%%` (without the quotes) in the Middle Search Bar', () => {
+            context('GIVEN `%%%` (without the quotes) was searched for in the Middle Search Bar', () => {
 
                 beforeEach(() => {
                     searchMiddleSearch(SEARCH_TERM_WILDCARD)
                 })
 
-                context('Products Sort By', () => {
+                context('functionality - Products Sort By', () => {
 
-
-                    it('should have all the Products Sort By options as stated in the requirements (wireframe sketch)', () => {
+                    it('THEN all the Products Sort By options stated in the requirements (wireframe sketch) are present', () => {
                         getProductOrderByOptions().then(options => {
                             const actual = [...options].map(o => o.text)
                             expect(actual.toString()).to.eq(REQUIRED_PRODUCTS_SORT_BY_OPTIONS.toString())
                         })
                     })
 
-                    it('should sort the products alphabetically WHEN selecting `Name: A to Z` Products Sort By option', () => {
+                    it('WHEN selecting `Name: A to Z` Products Sort By option THEN the products are sorted alphabetically', () => {
                         getProductOrderBySelector().select('Name: A to Z');
                         getProductTitlesInGrid().then(productTitles => {
                             // .toUpperCase() because javascript sort logic is different to the site's with regard to handling lower cases, whilst the later is still valid
@@ -432,7 +432,7 @@ describe('nopCommerce', () => {
                         })
                     })
 
-                    it('should sort the products in reverse alphabetical order WHEN selecting `Name: A to Z` Products Sort By option', () => {
+                    it('WHEN selecting `Name: Z to A` Products Sort By option THEN the products are sorted in reverse alphabetical order', () => {
                         getProductOrderBySelector().select('Name: Z to A');
                         getProductTitlesInGrid().then(productTitles => {
                             const productTitlesArray = [...productTitles].map(o => o.text.toUpperCase())
@@ -441,7 +441,7 @@ describe('nopCommerce', () => {
                         })
                     })
 
-                    it('should sort the products appropriately WHEN selecting `Price: Low to High` Products Sort By option', () => {
+                    it('WHEN selecting `Price: Low to High` Products Sort By option THEN the products are sorted accordingly', () => {
                         getProductOrderBySelector().select('Price: Low to High');
                         getProductPricesInGrid().then(productPrices => {
                             const productPricesStrArray = [...productPrices].map(o => o.textContent)
@@ -462,7 +462,7 @@ describe('nopCommerce', () => {
                         })
                     })
 
-                    it('should sort the products appropriately WHEN selecting `Price: High to Low` Products Sort By option', () => {
+                    it('WHEN selecting `Price: High to Low` Products Sort By option THEN the products are sorted accordingly', () => {
                         getProductOrderBySelector().select('Price: High to Low');
                         getProductPricesInGrid().then(productPrices => {
                             const productPricesStrArray = [...productPrices].map(o => o.textContent)
@@ -485,9 +485,9 @@ describe('nopCommerce', () => {
                 })
 
 
-                context('Products Page Size', () => {
+                context('functionality - Products Page Size', () => {
 
-                    it('should have all the `show x results per page` options as stated in the requirements (wireframe sketch)', () => {
+                    it('THEN all the Products Page Size options stated in the requirements (wireframe sketch) are present', () => {
                         getProductPageSizeOptions().then(options => {
                             const actual = [...options].map(o => o.text)
                             expect(actual.toString()).to.eq(REQUIRED_PRODUCTS_PAGE_SIZE_OPTIONS.toString())
@@ -495,40 +495,44 @@ describe('nopCommerce', () => {
                     })
 
                     // test will need to be updated upon fixing failing test above
-                    it('should limit the number of products per page WHEN selecting a `show x results per page` option', () => {
+                    it('WHEN selecting a Products Page Size option (e.g. 3) THEN only (e.g. 3) products per page are displayed', () => {
                         getProductPageSizeSelector().select('3')
                         cy.get('div.item-grid').children().should('have.length', 3)
                     })
+                })
 
-                    context('Pagination: STEP - Click on the 3rd pagination page', () => {
+                context('functionality - Pagination', () => {
+
+                    // tests will need to be updated once the correct Products Page Size options are implemented
+                    context('GIVEN the Products Page Size option 3 is selected', () => {
 
                         beforeEach(() => {
                             getProductPageSizeSelector().select('3')
                         })
 
-                        it('should navigate to the correct page WHEN selecting a numbered pagination page (e.g. `3`)', () => {
+                        it('WHEN the 3rd pagination page is clicked THEN the user is taken to the correct (3rd) pagination page', () => {
                             const pageNum = 3
                             clickOnPaginationPageNum(pageNum)
                             cy.url().should('include', 'pagenumber=' + pageNum)
                         })
 
-                        it('should navigate to the correct page WHEN selecting the pagination `next page` (i.e. `>`)', () => {
+                        it.only('WHEN clicking on the pagination `next page` (i.e. `>`) THEN the user is taken to the correct (2nd) pagination page', () => {
                             clickOnNextPaginationPage()
                             cy.url().should('include', 'pagenumber=2')
                         })
 
-                        it('should navigate to the correct page WHEN selecting the pagination `last page` (i.e. `>>`)', () => {
+                        it('WHEN clicking the pagination `last page` (i.e. `>>`) THEN the user is taken to the correct pagination page', () => {
                             clickOnLastPaginationPage()
                             cy.url().should('include', 'pagenumber=15')
                         })
 
-                        it('should navigate to the correct page WHEN selecting the pagination `previous page` (i.e. `<`)', () => {
+                        it('WHEN clicking the pagination `previous page` (i.e. `<`) THEN the user is taken to the correct pagination page', () => {
                             clickOnLastPaginationPage()
                             clickOnPreviousPaginationPage()
                             cy.url().should('include', 'pagenumber=14')
                         })
 
-                        it('should navigate to the correct page WHEN selecting the pagination `first page` (i.e. `<<`)', () => {
+                        it('WHEN clicking the pagination `first page` (i.e. `<<`) THEN the user is taken to the correct pagination page', () => {
                             clickOnLastPaginationPage()
                             clickOnFirstPaginationPage()
                             cy.url().should('not.include', 'pagenumber')
@@ -538,54 +542,56 @@ describe('nopCommerce', () => {
                 })
             })
 
-            context('Product Item: STEP - Search for `$100 Physical Gift Card` (without the quotes) in the Middle Search Bar', () => {
+            context('area - Product Results Grid', () => {
 
-                beforeEach(() => {
-                    searchMiddleSearch(SPECIFIC_PRODUCT_NAME)
-                    // cy.visit('https://demo.nopcommerce.com/search?q=%24100+Physical+Gift+Card&cid=0&mid=0&pf=&pt=&adv=false&isc=false&sid=false')
-                })
+                context('GIVEN `$100 Physical Gift Card` (without the quotes) was searched for in the Middle Search Bar', () => {
 
-                it('should navigate to the product page WHEN clicking on a product image', () => {
-                    clickOnFirstProductImage()
-                    getProductPageProductName().contains(SPECIFIC_PRODUCT_NAME)
-                })
+                    beforeEach(() => {
+                        searchMiddleSearch(SPECIFIC_PRODUCT_NAME)
+                    })
 
-                it('should navigate to the product page WHEN clicking on a product title', () => {
-                    clickOnFirstProductTitle()
-                    getProductPageProductName().contains(SPECIFIC_PRODUCT_NAME)
-                })
+                    it('WHEN clicking on a product image THEN the user is taken to the product page', () => {
+                        clickOnFirstProductImage()
+                        getProductPageProductName().contains(SPECIFIC_PRODUCT_NAME)
+                    })
 
-                it('should add the product to the Cart WHEN the `Add to Cart` button is clicked', () => {
-                    firstProductAddToShoppingCart()
-                    getShoppingCart().contains('(1)')
-                })
+                    it('WHEN clicking on a product title THEN the user is taken to the product page', () => {
+                        clickOnFirstProductTitle()
+                        getProductPageProductName().contains(SPECIFIC_PRODUCT_NAME)
+                    })
 
-                it('should add the product to the Wish List WHEN the `Add to wish` icon is clicked', () => {
-                    firstProductAddToWishList()
-                    getWishList().contains('(1)')
-                })
+                    it('WHEN the `Add to Cart` button is clicked THEN the product is added to the Cart', () => {
+                        firstProductAddToShoppingCart()
+                        getShoppingCart().contains('(1)')
+                    })
 
-                // Arguably this is testing the Wish List logic and not the Search Feature and its content
-                it.skip('should only add the product to the Wish List ONCE WHEN the `Add to wish` icon is clicked TWICE', () => {
-                    firstProductAddToWishList()
-                    firstProductAddToWishList()
-                    getWishList().contains('(1)')
-                })
+                    it('WHEN the `Add to wish` icon is clicked THEN the product is added to the Wish List', () => {
+                        firstProductAddToWishList()
+                        getWishList().contains('(1)')
+                    })
 
-                it('should add the product to the Compare List WHEN the `Add to compare list` icon is clicked', () => {
-                    firstProductAddToCompareList()
-                    cy.visit('https://demo.nopcommerce.com/compareproducts')
-                    cy.contains(SPECIFIC_PRODUCT_NAME)
-                    cy.get('.product-name').children().should('have.length', 2)
-                })
+                    it.skip('WHEN the `Add to wish` icon is clicked TWICE THEN the product is added to the Wish List ONLY ONCE', () => {
+                        // SKIPPED: arguably this is testing the Wish List logic and not the Search functionality and its content
+                        firstProductAddToWishList()
+                        firstProductAddToWishList()
+                        getWishList().contains('(1)')
+                    })
 
-                // Arguably this is testing the Wish List logic and not the Search Feature and its content
-                it.skip('should only add the product to the Compare List WHEN the `Add to compare list` icon is clicked TWICE', () => {
-                    firstProductAddToCompareList()
-                    firstProductAddToCompareList()
-                    cy.visit('https://demo.nopcommerce.com/compareproducts')
-                    cy.contains(SPECIFIC_PRODUCT_NAME)
-                    cy.get('.product-name').children().should('have.length', 2)
+                    it('WHEN the `Add to compare list` icon is clicked THEN the product is added to the Compare List', () => {
+                        firstProductAddToCompareList()
+                        cy.visit('https://demo.nopcommerce.com/compareproducts')
+                        cy.contains(SPECIFIC_PRODUCT_NAME)
+                        cy.get('.product-name').children().should('have.length', 2)
+                    })
+
+                    it.skip('WHEN the `Add to compare list` icon is clicked TWICE THEN the product is added to the Compare List ONLY ONCE', () => {
+                        // SKIPPED: arguably this is testing the Compare List logic and not the Search functionality and its content
+                        firstProductAddToCompareList()
+                        firstProductAddToCompareList()
+                        cy.visit('https://demo.nopcommerce.com/compareproducts')
+                        cy.contains(SPECIFIC_PRODUCT_NAME)
+                        cy.get('.product-name').children().should('have.length', 2)
+                    })
                 })
             })
         })
